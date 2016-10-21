@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class Skeleton_movement : MonoBehaviour
+public class Skeleton_movement : NetworkBehaviour
 {
     private Animator anim;
     public float speed;
@@ -11,7 +12,16 @@ public class Skeleton_movement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        cam = Camera.main.gameObject;
         anim = GetComponent<Animator>();
+        if(!isLocalPlayer)
+
+        {
+            Destroy(this);
+            return;
+        }
+
+
     }
 
     // Update is called once per frame
@@ -32,7 +42,7 @@ public class Skeleton_movement : MonoBehaviour
         transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
         transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
 
-        cam.transform.position = transform.position + new Vector3(0, 50, 0);
+        cam.transform.position = transform.position + new Vector3(0, 50, -7);
 
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
