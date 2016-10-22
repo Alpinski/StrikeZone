@@ -1263,21 +1263,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010509485588, guid: 10ea7e1213fb1854a87fd0ff57055f0d,
+    - target: {fileID: 114000010565369504, guid: 10ea7e1213fb1854a87fd0ff57055f0d,
         type: 2}
-      propertyPath: cam
+      propertyPath: playerRot
       value: 
-      objectReference: {fileID: 593467049}
-    - target: {fileID: 114000010940847734, guid: 10ea7e1213fb1854a87fd0ff57055f0d,
+      objectReference: {fileID: 4000010010678198, guid: 10ea7e1213fb1854a87fd0ff57055f0d,
         type: 2}
-      propertyPath: m_SendInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010940847734, guid: 10ea7e1213fb1854a87fd0ff57055f0d,
-        type: 2}
-      propertyPath: m_RotationSyncCompression
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10ea7e1213fb1854a87fd0ff57055f0d, type: 2}
   m_IsPrefabParent: 0

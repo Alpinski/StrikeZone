@@ -489,12 +489,12 @@ GameObject:
   - 95: {fileID: 95000011105446088}
   - 54: {fileID: 54000010418368920}
   - 65: {fileID: 65000010281001384}
-  - 114: {fileID: 114000010509485588}
-  - 114: {fileID: 114000012286254374}
   - 114: {fileID: 114000012285739232}
-  - 114: {fileID: 114000010940847734}
+  - 114: {fileID: 114000010565369504}
+  - 114: {fileID: 114000011081943194}
+  - 114: {fileID: 114000012172189824}
   m_Layer: 0
-  m_Name: Skeleton@Skin
+  m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1228,7 +1228,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000010509485588
+--- !u!114 &114000010565369504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013317273666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5affc9ca851b748a9c8c80ec35caae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  n_isMoving: 0
+  c_anim: {fileID: 95000011105446088}
+  LerpRate: 15
+  myTransform: {fileID: 4000010010678198}
+  playerRot: {fileID: 4000010010678198}
+--- !u!114 &114000011081943194
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1240,8 +1256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  cam: {fileID: 0}
---- !u!114 &114000010940847734
+  c_networkScirpt: {fileID: 0}
+--- !u!114 &114000012172189824
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1249,18 +1265,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013317273666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 577f862810af92a4989ee5c20aa59bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 2
-  m_RotationSyncCompression: 2
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 15
-  m_InterpolateMovement: 1
+  smoothTime: 10
 --- !u!114 &114000012285739232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1293,18 +1301,6 @@ MonoBehaviour:
     i15: 13
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114000012286254374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013317273666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577f862810af92a4989ee5c20aa59bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothTime: 200
 --- !u!137 &137000012532103944
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

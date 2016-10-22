@@ -13,11 +13,12 @@ public class Skeleton_abilities : NetworkBehaviour
     private bool mouseReady = false;
     private float QAblittyUseTimer = 3f;
     private float QAblittyCD;
+    public PlayerSeverPos c_networkScript;
 
-
-	void Start ()
+    void Start ()
     {
         anim = GetComponent<Animator>();
+        c_networkScript = GetComponent<PlayerSeverPos>();
         if (!isLocalPlayer)
         {
             Destroy(this);
@@ -28,10 +29,13 @@ public class Skeleton_abilities : NetworkBehaviour
 
 	void Update ()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetTrigger("IsAttacking");
+            c_networkScript.n_isAttacking = true;
+        }
 
         QAbility();
-
-
     }
 
     private void QAbility()
@@ -39,10 +43,6 @@ public class Skeleton_abilities : NetworkBehaviour
         QAblittyUseTimer -= Time.deltaTime;
         QAblittyCD -= Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            anim.SetTrigger("IsAttacking");
-        }
 
         if (QAblittyUseTimer <= 0)
         {
@@ -61,7 +61,7 @@ public class Skeleton_abilities : NetworkBehaviour
                 mouseReady = false;
 
             }
-            else if (Input.GetButtonDown("s"))
+            else if (Input.GetButtonDown("q"))
             {
                 mouseReady = false;
             }

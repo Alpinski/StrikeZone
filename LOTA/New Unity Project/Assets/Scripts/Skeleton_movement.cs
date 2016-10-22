@@ -6,22 +6,20 @@ public class Skeleton_movement : NetworkBehaviour
 {
     private Animator anim;
     public float speed;
-    public GameObject cam;
-
+    private GameObject cam;
+    public PlayerSeverPos c_networkScript;
 
     // Use this for initialization
     void Start()
     {
+        c_networkScript = GetComponent<PlayerSeverPos>();
         cam = Camera.main.gameObject;
         anim = GetComponent<Animator>();
-        if(!isLocalPlayer)
-
+        if (!isLocalPlayer)
         {
             Destroy(this);
             return;
         }
-
-
     }
 
     // Update is called once per frame
@@ -33,10 +31,12 @@ public class Skeleton_movement : NetworkBehaviour
         if (H != 0 || V != 0)
         {
             anim.SetBool("IsMoving", true);
+            c_networkScript.n_isMoving = true;
         }
         else
         {
             anim.SetBool("IsMoving", false);
+            c_networkScript.n_isMoving = false;
         }
 
         transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
