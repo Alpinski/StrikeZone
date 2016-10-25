@@ -20,10 +20,6 @@ public class PlayerSeverPos : NetworkBehaviour
     [SerializeField] private Transform myTransform;
 
    
-    void Start()
-    {
-        c_anim = GetComponent<Animator>();
-    }
 
 
 
@@ -35,23 +31,6 @@ public class PlayerSeverPos : NetworkBehaviour
         LerpPos();
         LerpRot();
 
-        if (!isLocalPlayer)
-        {
-            if (n_isMoving)
-            {
-               c_anim.SetBool("IsMoving", true);
-            }
-            else
-            {
-                c_anim.SetBool("IsMoving", false);
-            }
-        
-            if(n_isAttacking)
-            {
-                c_anim.SetTrigger("IsAttacking");
-                n_isAttacking = false;
-            }
-        }
     }
 
 
@@ -90,17 +69,7 @@ public class PlayerSeverPos : NetworkBehaviour
         syncPos = pos;
     }
 
-    [Command]
-    void CmdAnimMoving(bool x)
-    {
-        n_isMoving = x;
-    }
 
-    [Command]
-    void CmdAnimAttacking(bool z)
-    {
-        n_isAttacking = z;
-    }
 
 
     [ClientCallback]
@@ -109,8 +78,6 @@ public class PlayerSeverPos : NetworkBehaviour
         if(isLocalPlayer)
         {
             CmdPlayerPos(myTransform.position);
-            CmdAnimMoving(n_isMoving);
-            CmdAnimAttacking(n_isAttacking);
             CmdPlayerRot(myTransform.rotation);
         }
     }
