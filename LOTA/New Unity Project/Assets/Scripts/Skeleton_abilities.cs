@@ -13,12 +13,11 @@ public class Skeleton_abilities : NetworkBehaviour
     private bool mouseReady = false;
     private float QAblittyUseTimer = 3f;
     private float QAblittyCD;
-    public PlayerSeverPos c_networkScript;
+
 
     void Start ()
     {
         anim = GetComponent<Animator>();
-        c_networkScript = GetComponent<PlayerSeverPos>();
         if (!isLocalPlayer)
         {
             Destroy(this);
@@ -32,7 +31,6 @@ public class Skeleton_abilities : NetworkBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetTrigger("IsAttacking");
-            c_networkScript.n_isAttacking = true;
         }
 
         QAbility();
