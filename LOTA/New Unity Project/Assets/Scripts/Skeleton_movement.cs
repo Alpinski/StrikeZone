@@ -31,12 +31,12 @@ public class Skeleton_movement : NetworkBehaviour
         if (H != 0 || V != 0)
         {
             anim.SetBool("IsMoving", true);
-            c_networkScript.n_isMoving = true;
+
         }
         else
         {
             anim.SetBool("IsMoving", false);
-            c_networkScript.n_isMoving = false;
+
         }
 
         transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;

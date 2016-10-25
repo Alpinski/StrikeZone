@@ -717,13 +717,14 @@ GameObject:
   - 65: {fileID: 65000010765349362}
   - 114: {fileID: 114000011629716930}
   - 114: {fileID: 114000011426801880}
+  - 114: {fileID: 114000011607480190}
   m_Layer: 0
   m_Name: samuzai_animation_ok
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000012586350938
 GameObject:
   m_ObjectHideFlags: 1
@@ -1525,7 +1526,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012547281192}
   m_LocalRotation: {x: -0, y: 0.9992422, z: -0, w: -0.038924236}
-  m_LocalPosition: {x: -5.79, y: 10.75, z: 48.679}
+  m_LocalPosition: {x: 231.6, y: 10.75, z: 30.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 184.33398, z: 0}
   m_Children:
@@ -2722,6 +2723,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1dcaede4d022f4fbdf9b8815bb6b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011607480190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012547281192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5affc9ca851b748a9c8c80ec35caae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LerpRate: 15
+  myTransform: {fileID: 4000010380567916}
 --- !u!114 &114000011629716930
 MonoBehaviour:
   m_ObjectHideFlags: 1

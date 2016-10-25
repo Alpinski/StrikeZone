@@ -10,10 +10,8 @@ public class PlayerSeverPos : NetworkBehaviour
 
 
     [SyncVar] private Vector3 syncPos;
-    [SyncVar] public bool n_isMoving;
-    [SyncVar] public bool n_isAttacking;
 
-    public Animator c_anim;
+   
     [SerializeField] float LerpRate = 15;
 
 
