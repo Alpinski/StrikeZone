@@ -7,19 +7,24 @@ public class DragonAbilities : NetworkBehaviour
     private float timeStamp;
     public float coolDownPeriodofInSeconds;
 
+    private Animator anim;
+
     public float distanceQ;
 
-    public GameObject MU;
     public GameObject BigFB;
-
-    private Vector3 point;
-
+    public GameObject FireBolt;
+    public GameObject FlameStrike;
     public GameObject FlameThrower;
+    public GameObject MeteorUltimate;
+
+    private Vector3 point;   
 
     public float m_LaunchForce = 30f;
 
     void Start ()
     {
+        anim = GetComponent<Animator>();
+
         timeStamp = coolDownPeriodofInSeconds;
 
         if (!isLocalPlayer)
@@ -49,6 +54,14 @@ public class DragonAbilities : NetworkBehaviour
             timeStamp = 0;
         }
 
+        if (Input.GetButtonDown("Fire1") && timeStamp <= 0)
+        {
+            timeStamp = coolDownPeriodofInSeconds;
+
+            GameObject X = Instantiate(FireBolt, transform.position + transform.forward * distanceQ + transform.up * 4.5f, transform.rotation) as GameObject;
+            X.transform.parent = transform;
+        }
+
         if (Input.GetButtonDown("Fire2") && timeStamp <= 0)
         {
             timeStamp = coolDownPeriodofInSeconds;
@@ -57,24 +70,30 @@ public class DragonAbilities : NetworkBehaviour
             X.transform.parent = transform;
         }
 
-        if (Input.GetButtonDown("LeftShift"))
-        {
-            Instantiate(MU, point, Quaternion.Euler(90,0,0));
-        }
-
-        timeStamp -= Time.deltaTime;
-
-        if (Input.GetKeyDown("return"))
-        {
-            timeStamp = 0;
-        }
-
         if (Input.GetButtonDown("Q") && timeStamp <= 0)
         {
             timeStamp = coolDownPeriodofInSeconds;
 
-           GameObject X =  Instantiate(FlameThrower, transform.position + transform.forward * distanceQ + transform.up * 4.5f, transform.rotation) as GameObject;
-            X.transform.parent = transform; 
+            GameObject X = Instantiate(FlameThrower, transform.position + transform.forward * distanceQ + transform.up * 4.5f, transform.rotation) as GameObject;
+            X.transform.parent = transform;
+        }
+
+        if (Input.GetButtonDown("E"))
+        {
+            timeStamp = coolDownPeriodofInSeconds;
+
+            Instantiate(FlameStrike, point, Quaternion.Euler(0, 0, 0));
+        }
+
+        if (Input.GetButtonDown("LeftShift"))
+        {
+            Instantiate(MeteorUltimate, point, Quaternion.Euler(140, 0, 0));
+        }
+
+        if (Input.GetButtonDown("Space"))
+        {
+            anim.SetTrigger("IsJumping");
+            Debug.Log("jump");
         }
     }   
 }
