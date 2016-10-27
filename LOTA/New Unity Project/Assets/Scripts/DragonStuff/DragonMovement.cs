@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class DragonMovement : MonoBehaviour {
+public class DragonMovement : NetworkBehaviour
+{
     private Animator anim;
     public float speed;
-    public GameObject cam;
+    private GameObject cam;
     
 	void Start ()
     {
         anim = GetComponent<Animator>();
-	}
+        cam = Camera.main.gameObject;
+
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+            return;
+        }
+    }
 	
 	void Update ()
     {

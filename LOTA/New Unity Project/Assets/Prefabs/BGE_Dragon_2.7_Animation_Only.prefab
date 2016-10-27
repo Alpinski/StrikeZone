@@ -1842,6 +1842,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012717846030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011666803722}
+  m_Layer: 0
+  m_Name: FireSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000012724885086
 GameObject:
   m_ObjectHideFlags: 1
@@ -2541,16 +2556,17 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013702715786}
   - 95: {fileID: 95000012613101996}
-  - 64: {fileID: 64000012236900238}
   - 114: {fileID: 114000014243436150}
   - 114: {fileID: 114000011787212498}
+  - 114: {fileID: 114000012640525076}
+  - 114: {fileID: 114000013119361228}
   m_Layer: 0
   m_Name: BGE_Dragon_2.7_Animation_Only
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000014077781222
 GameObject:
   m_ObjectHideFlags: 1
@@ -3711,6 +3727,19 @@ Transform:
   - {fileID: 4000012502199222}
   m_Father: {fileID: 4000010561693324}
   m_RootOrder: 0
+--- !u!4 &4000011666803722
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012717846030}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 6.26, z: 6.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013702715786}
+  m_RootOrder: 2
 --- !u!4 &4000011669431860
 Transform:
   m_ObjectHideFlags: 1
@@ -5037,12 +5066,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014019796440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.37, y: 11.12, z: 39.6}
+  m_LocalPosition: {x: 17.37, y: 20.08, z: 39.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000010977481436}
   - {fileID: 4000012195993562}
+  - {fileID: 4000011666803722}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000013714214598
@@ -5380,18 +5410,6 @@ Transform:
   - {fileID: 4000010840949138}
   m_Father: {fileID: 4000012805295252}
   m_RootOrder: 0
---- !u!64 &64000012236900238
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014019796440}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
 --- !u!95 &95000012613101996
 Animator:
   serializedVersion: 3
@@ -5422,6 +5440,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LerpRate: 15
   myTransform: {fileID: 4000013702715786}
+--- !u!114 &114000012640525076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014019796440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e3855faf97c8c4383c5aebb30bc50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDownPeriodofInSeconds: 0
+  distanceQ: 4.5
+  MU: {fileID: 165786, guid: d7b50f004cdc74b409188d8b822292fc, type: 2}
+  BigFB: {fileID: 0}
+  FlameThrower: {fileID: 163286, guid: 50daa816369323b42b56093bb108296f, type: 2}
+  m_LaunchForce: 30
+--- !u!114 &114000013119361228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014019796440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24909fde49ff53942a2a7d04aab3000d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
 --- !u!114 &114000014243436150
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class DragonRightClick : MonoBehaviour
+public class DragonRightClick : NetworkBehaviour
+
 {
     private float timeStamp;
     public float coolDownPeriodofInSeconds;
@@ -15,6 +17,12 @@ public class DragonRightClick : MonoBehaviour
     private void Start()
     {
         timeStamp = coolDownPeriodofInSeconds;
+
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+            return;
+        }
     }
 
 

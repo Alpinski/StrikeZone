@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class DragonLeftClick : MonoBehaviour
+public class DragonLeftClick : NetworkBehaviour
 {
 
     private float timeStamp;
