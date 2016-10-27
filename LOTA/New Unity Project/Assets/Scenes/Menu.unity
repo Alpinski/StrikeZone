@@ -440,6 +440,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &455137063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 455137065}
+  - 114: {fileID: 455137064}
+  m_Layer: 0
+  m_Name: GamePlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &455137064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455137063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!4 &455137065
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455137063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -72.40032, y: -18.033127, z: 1.859848}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &557476217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,13 +1157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f5ca0f02343b04baf561327a5d417a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  network: {fileID: 349578137}
   dragonPrefab: {fileID: 1000014019796440, guid: 8d1269a293d2fda4187a22eb31d702ed,
     type: 2}
   SkeletonPrefab: {fileID: 1000013317273666, guid: 10ea7e1213fb1854a87fd0ff57055f0d,
     type: 2}
   samuraiPrefab: {fileID: 1000012547281192, guid: 01f7ad9ceb2ed134f886e77c52a9344d,
     type: 2}
+  CharacterChoice: {fileID: 0}
 --- !u!1 &1846714874
 GameObject:
   m_ObjectHideFlags: 0
