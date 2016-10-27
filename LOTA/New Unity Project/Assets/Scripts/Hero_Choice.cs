@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class Hero_Choice : MonoBehaviour
 {
-    public GameObject network;
+    private NetworkLobbyManager network;
     public GameObject dragonPrefab;
     public GameObject SkeletonPrefab;
     public GameObject samuraiPrefab;
@@ -12,25 +12,27 @@ public class Hero_Choice : MonoBehaviour
     void Start()
     {
         Debug.Log("Object Started");
+        network = FindObjectOfType<NetworkLobbyManager>();
+
     }
 
     public void Dragon()
     {
-        network.GetComponent<NetworkLobbyManager>().gamePlayerPrefab = dragonPrefab;
+        network.gamePlayerPrefab = dragonPrefab;
 
     }
 
   public void Skeleton()
     {
-        network.GetComponent<NetworkLobbyManager>().gamePlayerPrefab = SkeletonPrefab;
-        network.GetComponent<NetworkLobbyManager>().showLobbyGUI = true;
+        network.gamePlayerPrefab = SkeletonPrefab;
+        network.showLobbyGUI = true;
     }
 
 
    public void Samurai()
     {
-        network.GetComponent<NetworkLobbyManager>().gamePlayerPrefab = samuraiPrefab;
-        network.GetComponent<NetworkLobbyManager>().showLobbyGUI = true;
+        network.gamePlayerPrefab = samuraiPrefab;
+        network.showLobbyGUI = true;
     }
 
 
