@@ -493,6 +493,7 @@ GameObject:
   - 114: {fileID: 114000010565369504}
   - 114: {fileID: 114000011081943194}
   - 114: {fileID: 114000012172189824}
+  - 114: {fileID: 114000013058021828}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -1239,11 +1240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5affc9ca851b748a9c8c80ec35caae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  n_isMoving: 0
-  c_anim: {fileID: 95000011105446088}
   LerpRate: 15
   myTransform: {fileID: 4000010010678198}
-  playerRot: {fileID: 4000010010678198}
 --- !u!114 &114000011081943194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1256,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  c_networkScirpt: {fileID: 0}
+  c_networkScript: {fileID: 0}
 --- !u!114 &114000012172189824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1301,6 +1299,25 @@ MonoBehaviour:
     i15: 13
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114000013058021828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013317273666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95000011105446088}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!137 &137000012532103944
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
