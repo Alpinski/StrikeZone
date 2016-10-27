@@ -2539,7 +2539,17 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
+<<<<<<< HEAD
   - 4: {fileID: 4000010352255768}
+=======
+  - 4: {fileID: 4000013702715786}
+  - 95: {fileID: 95000012613101996}
+  - 114: {fileID: 114000014243436150}
+  - 114: {fileID: 114000011787212498}
+  - 114: {fileID: 114000012640525076}
+  - 114: {fileID: 114000013119361228}
+  - 114: {fileID: 114000010417027894}
+>>>>>>> a89257182a80ddf50820a787cbf1be0a6c50daec
   m_Layer: 0
   m_Name: w2_R
   m_TagString: Untagged
@@ -5398,7 +5408,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+<<<<<<< HEAD
 --- !u!114 &114000010293446654
+=======
+--- !u!114 &114000010417027894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014019796440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95000012613101996}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
+--- !u!114 &114000011787212498
+>>>>>>> a89257182a80ddf50820a787cbf1be0a6c50daec
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

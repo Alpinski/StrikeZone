@@ -143,7 +143,7 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _TranslucencyColor
-      second: {r: 0.73, g: 0.85, b: 0.41, a: 1}
+      second: {r: 0.38235295, g: 0.32193652, b: 0.26708478, a: 1}
     - first:
         name: _TreeInstanceColor
       second: {r: 1, g: 1, b: 1, a: 1}
