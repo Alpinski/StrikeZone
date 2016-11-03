@@ -15,7 +15,8 @@ public class PlayerSeverPos : NetworkBehaviour
     [SerializeField] float LerpRate = 15;
 
 
-    [SerializeField] private Transform myTransform;
+    [SerializeField]
+    Transform myTransform;
 
    
 
