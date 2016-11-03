@@ -7,6 +7,7 @@ public class SamMove : NetworkBehaviour {
     public Animator anim;
     public float speed;
     private GameObject cam;
+    private SamAbilities samabilities;
 
     // Use this for initialization
     void Start()
@@ -17,6 +18,8 @@ public class SamMove : NetworkBehaviour {
             Destroy(this);
             return;
         }
+
+        samabilities = gameObject.GetComponent<SamAbilities>();
     }
 
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class SamMove : NetworkBehaviour {
         Plane mouseplane = new Plane(transform.up, transform.position);
 
         float distance;
-        if (mouseplane.Raycast(ray, out distance))
+        if (mouseplane.Raycast(ray, out distance) && samabilities.isSpin == false)
         {
             Vector3 point = ray.GetPoint(distance);
             transform.LookAt(point);
