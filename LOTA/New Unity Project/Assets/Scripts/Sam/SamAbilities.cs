@@ -5,6 +5,9 @@ using UnityEngine.Networking;
 public class SamAbilities : NetworkBehaviour {
 
     private Animator anim;
+    public bool isSpin = false;
+    private SamMove sammove;
+    public GameObject trail;
 
     // Use this for initialization
     void Start () {
@@ -14,18 +17,30 @@ public class SamAbilities : NetworkBehaviour {
             Destroy(this);
             return;
         }
+
+        sammove = gameObject.GetComponent<SamMove>();
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isSpin == false)
         {
-            Debug.Log("attacking");
             anim.SetTrigger("isAttack");
         }
 
-        transform.Rotate(0, 0, 50 * Time.deltaTime);
-
+        if (Input.GetKey(KeyCode.E))
+        {
+            isSpin = true;
+            sammove.speed = 15f;
+            transform.Rotate(0f, -20f, 0f);
+            trail.SetActive(true);
+        }
+        else
+        {
+            isSpin = false;
+            sammove.speed = 30f;
+            trail.SetActive(false);
+        }
     }
 }
