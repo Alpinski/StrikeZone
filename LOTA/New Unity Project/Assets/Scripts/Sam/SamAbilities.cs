@@ -5,7 +5,11 @@ using UnityEngine.Networking;
 public class SamAbilities : NetworkBehaviour {
 
     private Animator anim;
+
     public bool isSpin = false;
+
+    public float spinTime;
+
     private SamMove sammove;
     public GameObject trail;
 
@@ -29,12 +33,15 @@ public class SamAbilities : NetworkBehaviour {
             anim.SetTrigger("isAttack");
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            isSpin = true;
-            sammove.speed = 15f;
-            transform.Rotate(0f, -20f, 0f);
-            trail.SetActive(true);
+            do
+            {
+                isSpin = true;
+                sammove.speed = 15f;
+                transform.Rotate(0f, -20f, 0f);
+                trail.SetActive(true);
+            } while (spinTime <= 0);
         }
         else
         {
