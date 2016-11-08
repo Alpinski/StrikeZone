@@ -11,8 +11,6 @@ public class DragonAbilities : NetworkBehaviour
 
     public float distanceQ;
 
-    public float Damage;
-
     public GameObject BigFB;
     public GameObject FireBolt;
     public GameObject FlameStrike;
@@ -20,10 +18,8 @@ public class DragonAbilities : NetworkBehaviour
     public GameObject MeteorUltimate;
 
     public float bulletSpeed = 10f;
-   
-    private Vector3 point;   
 
-    public float m_LaunchForce = 30f;
+    private Vector3 point;   
 
     void Start ()
     {
@@ -53,6 +49,8 @@ public class DragonAbilities : NetworkBehaviour
  
         }
 
+        Quaternion targrot = transform.rotation;
+
         if (Input.GetKeyDown("return"))
         {
             timeStamp = 0;
@@ -63,18 +61,18 @@ public class DragonAbilities : NetworkBehaviour
 
             timeStamp = coolDownPeriodofInSeconds;
 
-           Quaternion targrot = transform.rotation;
-
             GameObject X = Instantiate(FireBolt, transform.position + transform.forward * distanceQ + transform.up * 4.5f, targrot) as GameObject;
             X.transform.position = X.transform.position + transform.forward * bulletSpeed;
+
+            
         }
 
         if (Input.GetButtonDown("Fire2") && timeStamp <= 0)
         {
             timeStamp = coolDownPeriodofInSeconds;
             
-            GameObject X = Instantiate(BigFB, transform.position + transform.forward * distanceQ + transform.up * 4.5f, transform.rotation) as GameObject;
-            X.transform.parent = transform;
+            GameObject X = Instantiate(BigFB, transform.position + transform.forward * distanceQ + transform.up * 4.5f, targrot) as GameObject;
+            X.transform.position = X.transform.position + transform.forward * bulletSpeed;
         }
 
         if (Input.GetButtonDown("Q") && timeStamp <= 0)
@@ -101,10 +99,5 @@ public class DragonAbilities : NetworkBehaviour
         {
             anim.SetTrigger("IsJumping");
         }
-    }
-
-   void CalculateDamage()
-    {
-
     } 
 }
