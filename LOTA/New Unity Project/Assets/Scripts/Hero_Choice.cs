@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 
 using UnityEngine.SceneManagement;
@@ -23,13 +24,24 @@ public class Hero_Choice : NetworkBehaviour
         
         lobbyScene = SceneManager.GetActiveScene();
     }
+
+    void PlayerJoinInit()
+    {
+        if (network == null)
+            network = FindObjectOfType<Choice_Manager>();
+
+        if(isServer)
+            CmdPlayerRequestChoices();
+    }
+
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
 
-
         SceneManager.activeSceneChanged += SceneChanged;
         transform.GetChild(0).gameObject.SetActive(true);
+
+        PlayerJoinInit();
     }
 
     void SceneChanged(Scene start, Scene end)
@@ -59,6 +71,25 @@ public class Hero_Choice : NetworkBehaviour
             Debug.LogError("Choice of character has not been registered. " + choice.name);
         }
         CmdSetPlayerChoice(choiceId);
+    }
+
+    [Command]
+    void CmdPlayerRequestChoices()
+    {
+        network.RegisterPlayerJoin(connectionToClient.connectionId);
+
+        var choices = new Dictionary<int, int>(network.PlayerChoices);
+        foreach (var choice in choices)
+        {
+            RpcUpdateFromConnected(choice.Key, choice.Value);
+        }
+    }
+
+    [ClientRpc]
+    void RpcUpdateFromConnected(int id, int choice)
+    {
+        network.RegisterPlayerJoin(id);
+        network.SetPlayerTypeLobby(id, choice);
     }
 
     [Command]
@@ -93,7 +124,7 @@ public class Hero_Choice : NetworkBehaviour
         SetPlayerChoice(CharacterChoice);
     }
 
-
+    //The Samurai prefab plugged into this script is causing problems
    public void Samurai()
     {
         CharacterChoice = samuraiPrefab;

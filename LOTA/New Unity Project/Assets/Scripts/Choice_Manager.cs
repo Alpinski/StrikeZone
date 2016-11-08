@@ -7,18 +7,26 @@ public class Choice_Manager : NetworkLobbyManager
 {
     Dictionary<int, int> currentPlayers = new Dictionary<int, int>();
 
-    public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
+    public bool RegisterPlayerJoin(int id)
     {
-        if (!currentPlayers.ContainsKey(conn.connectionId))
-            currentPlayers.Add(conn.connectionId, 0);
+        if (!currentPlayers.ContainsKey(id))
+        {
+            currentPlayers.Add(id, 0);
+            return true;
+        }
 
-        return base.OnLobbyServerCreateLobbyPlayer(conn, playerControllerId);
+        return false;
     }
 
-    public void SetPlayerTypeLobby(int conn, int _type)
+    public Dictionary<int, int> PlayerChoices
     {
-        if (currentPlayers.ContainsKey(conn))
-            currentPlayers[conn] = _type;
+        get { return currentPlayers; }
+    }
+
+    public void SetPlayerTypeLobby(int id, int _type)
+    {
+        if (currentPlayers.ContainsKey(id))
+            currentPlayers[id] = _type;
     }
 
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
