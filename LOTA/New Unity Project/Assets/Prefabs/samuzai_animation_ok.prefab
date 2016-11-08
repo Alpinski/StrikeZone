@@ -711,12 +711,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010380567916}
+  - 54: {fileID: 54000010166265178}
   - 95: {fileID: 95000013665922368}
   - 114: {fileID: 114000010609451924}
-  - 54: {fileID: 54000010166265178}
-  - 65: {fileID: 65000010765349362}
-  - 114: {fileID: 114000011607480190}
   - 114: {fileID: 114000011931123874}
+  - 65: {fileID: 65000010765349362}
+  - 135: {fileID: 135000011376695316}
+  - 114: {fileID: 114000011607480190}
   - 114: {fileID: 114000013606829316}
   - 114: {fileID: 114000011183355176}
   m_Layer: 0
@@ -1543,7 +1544,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012547281192}
   m_LocalRotation: {x: -0, y: 0.9992422, z: -0, w: -0.038924236}
-  m_LocalPosition: {x: 0.05078125, y: 10.785572, z: 27.81}
+  m_LocalPosition: {x: 14.198059, y: 10.785568, z: 20.831543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 184.33398, z: 0}
   m_Children:
@@ -2807,6 +2808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpin: 0
+  spinTime: 8
   trail: {fileID: 1000013404594974}
 --- !u!114 &114000011607480190
 MonoBehaviour:
@@ -2853,6 +2855,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 95000013665922368}
   speed: 30
+--- !u!135 &135000011376695316
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012547281192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8.51
+  m_Center: {x: 0, y: 2.86, z: 0}
 --- !u!137 &137000011281365858
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

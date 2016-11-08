@@ -7,8 +7,10 @@ public class SamAbilities : NetworkBehaviour {
     private Animator anim;
 
     public bool isSpin = false;
+    private bool isSpinning = false;
 
     public float spinTime;
+    private float timeSpin;
 
     private SamMove sammove;
     public GameObject trail;
@@ -23,10 +25,28 @@ public class SamAbilities : NetworkBehaviour {
         }
 
         sammove = gameObject.GetComponent<SamMove>();
+
+        timeSpin = spinTime;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
+        spinTime = spinTime - Time.deltaTime;
+
+        if (isSpinning == true)
+        {
+            transform.Rotate(0f, -20f, 0f);
+        }
+
+        if (spinTime <= 0)
+        {
+            isSpinning = false;
+            isSpin = false;
+            sammove.speed = 30f;
+            trail.SetActive(false);
+            spinTime = timeSpin;
+        }
 
         if (Input.GetMouseButtonDown(0) && isSpin == false)
         {
@@ -35,19 +55,10 @@ public class SamAbilities : NetworkBehaviour {
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            do
-            {
-                isSpin = true;
-                sammove.speed = 15f;
-                transform.Rotate(0f, -20f, 0f);
-                trail.SetActive(true);
-            } while (spinTime <= 0);
-        }
-        else
-        {
-            isSpin = false;
-            sammove.speed = 30f;
-            trail.SetActive(false);
+            isSpin = true;
+            isSpinning = true;
+            sammove.speed = 15f;
+            trail.SetActive(true);
         }
     }
 }
