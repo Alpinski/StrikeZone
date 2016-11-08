@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Health : MonoBehaviour
 {
     public float HP = 10000;
-    private float CurrentHp;
+    public float CurrentHp;
     private bool isDead;
+    
+    void Start()
+    {
+        
+    }
 
     private void OnEnable()
     {
@@ -13,10 +18,10 @@ public class NewBehaviourScript : MonoBehaviour
         isDead = false;
     }
 
-    private void TakeDamage(float amount)
+   public void TakeDamage(float amount)
     {
         CurrentHp -= amount;
-
+        Debug.Log("Hit" +CurrentHp);
         if (CurrentHp <= 0 && !isDead)
         {
             Dead();
@@ -27,5 +32,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         isDead = true;
         gameObject.SetActive(false);
+        Debug.Log("DED");
     }
 }

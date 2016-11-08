@@ -65,6 +65,7 @@ GameObject:
   - 114: {fileID: 11466612}
   - 54: {fileID: 5471416}
   - 108: {fileID: 10857032}
+  - 114: {fileID: 114000012648750826}
   m_Layer: 0
   m_Name: FireboltCollider
   m_TagString: Untagged
@@ -136,7 +137,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 0.0000001
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -405,7 +406,7 @@ MonoBehaviour:
   ProjectileCollisionSound: {fileID: 8299452}
   ProjectileExplosionParticleSystem: {fileID: 19843370}
   ProjectileExplosionRadius: 3
-  ProjectileExplosionForce: 500
+  ProjectileExplosionForce: 0
   ProjectileColliderDelay: 0
   ProjectileColliderSpeed: 25
   ProjectileDirection: {x: 0, y: 0, z: 1}
@@ -3899,7 +3900,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedWireframeHidden: 1
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -3976,3 +3977,14 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141530}
   m_IsPrefabParent: 1
+--- !u!114 &114000012648750826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c27ba9ef8bb15643ba5f5369a7dfe53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1140,7 +1140,7 @@ GameObject:
   - 54: {fileID: 54000012391529688}
   m_Layer: 0
   m_Name: BGE_Dragon_2.7_Animation_Only
-  m_TagString: Untagged
+  m_TagString: Dragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5440,7 +5440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceQ: 4.5
-  Damage: 0
   BigFB: {fileID: 121802, guid: 8f18e1d8c46c51f429429815455062fc, type: 2}
   FireBolt: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 2}
   FlameStrike: {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 2}
@@ -5491,6 +5490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401fa1120b86c07438643136befdbd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 10000
+  CurrentHp: -5000
 --- !u!114 &114000013762368462
 MonoBehaviour:
   m_ObjectHideFlags: 1
