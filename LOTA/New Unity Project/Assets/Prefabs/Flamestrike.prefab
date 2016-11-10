@@ -11,6 +11,7 @@ GameObject:
   - 54: {fileID: 5413020}
   - 135: {fileID: 13544914}
   - 114: {fileID: 11483642}
+  - 114: {fileID: 114000013015575750}
   m_Layer: 8
   m_Name: FlameStrikeCollider
   m_TagString: Untagged
@@ -7550,3 +7551,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 132746}
   m_IsPrefabParent: 1
+--- !u!114 &114000013015575750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c27ba9ef8bb15643ba5f5369a7dfe53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 750

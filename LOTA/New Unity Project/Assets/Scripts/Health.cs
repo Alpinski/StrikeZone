@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-    public float HP = 10000;
+    public float HP = 2000;
     public float CurrentHp;
     private bool isDead;
     
+
+
     void Start()
     {
         

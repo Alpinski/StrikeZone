@@ -11,6 +11,7 @@ namespace DigitalRuby.PyroParticles
     /// <param name="meteor">Meteor</param>
     public delegate void MeteorSwarmCollisionDelegate(MeteorSwarmScript script, GameObject meteor);
 
+    
     /// <summary>
     /// Handles the meteor swarm effect
     /// </summary>
@@ -163,8 +164,10 @@ namespace DigitalRuby.PyroParticles
         private IEnumerator CleanupMeteor(float delay, GameObject obj)
         {
             yield return new WaitForSeconds(delay);
-
-            GameObject.Destroy(obj.GetComponent<Collider>());
+            if (obj.GetComponent<Collider>() != null)
+            {
+                GameObject.Destroy(obj.GetComponent<Collider>());
+            }
             GameObject.Destroy(obj.GetComponent<Rigidbody>());
             GameObject.Destroy(obj.GetComponent<TrailRenderer>());
         }

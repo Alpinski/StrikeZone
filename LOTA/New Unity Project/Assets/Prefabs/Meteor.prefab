@@ -15,6 +15,7 @@ GameObject:
   - 96: {fileID: 9617906}
   - 82: {fileID: 8206854}
   - 135: {fileID: 13509832}
+  - 114: {fileID: 114000013074605190}
   m_Layer: 8
   m_Name: Meteor
   m_TagString: Untagged
@@ -259,3 +260,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 164416}
   m_IsPrefabParent: 1
+--- !u!114 &114000013074605190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c27ba9ef8bb15643ba5f5369a7dfe53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 500
