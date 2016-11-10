@@ -24,6 +24,8 @@ public class SamAbilities : NetworkBehaviour {
             return;
         }
 
+        trail.SetActive(false);
+
         sammove = gameObject.GetComponent<SamMove>();
 
         timeSpin = spinTime;
