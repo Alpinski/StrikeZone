@@ -1543,7 +1543,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012547281192}
   m_LocalRotation: {x: -0, y: 0.9992422, z: -0, w: -0.038924236}
-  m_LocalPosition: {x: 14.198059, y: 10.785568, z: 20.831543}
+  m_LocalPosition: {x: -105.625885, y: 2.5951376, z: -25.046692}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 184.33398, z: 0}
   m_Children:
@@ -2775,7 +2775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95000013665922368}
-  speed: 15
+  speed: 30
 --- !u!114 &114000013549074368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2788,8 +2788,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpin: 0
-  spinTime: 0
-  trail: {fileID: 1000012547281192}
+  spinTime: 8
+  trail: {fileID: 1000013404594974}
 --- !u!114 &114000013663123180
 MonoBehaviour:
   m_ObjectHideFlags: 1
