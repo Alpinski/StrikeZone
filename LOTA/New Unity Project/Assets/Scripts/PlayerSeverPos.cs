@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class PlayerSeverPos : NetworkBehaviour
 {
     [SyncVar]
-    private Quaternion syncPlayerRot;
+    private Quaternion syncPlayerRot = Quaternion.identity;
 
 
 
