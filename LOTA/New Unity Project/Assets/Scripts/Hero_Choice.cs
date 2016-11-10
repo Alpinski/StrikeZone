@@ -18,7 +18,6 @@ public class Hero_Choice : NetworkBehaviour
 
     void Start()
     {
-        Debug.Log("Object Started");
         network = FindObjectOfType<Choice_Manager>();
 
         
@@ -30,7 +29,7 @@ public class Hero_Choice : NetworkBehaviour
         if (network == null)
             network = FindObjectOfType<Choice_Manager>();
 
-        if(isServer)
+        if(isClient)
             CmdPlayerRequestChoices();
     }
 
@@ -42,6 +41,11 @@ public class Hero_Choice : NetworkBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
 
         PlayerJoinInit();
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= SceneChanged;
     }
 
     void SceneChanged(Scene start, Scene end)
@@ -77,12 +81,16 @@ public class Hero_Choice : NetworkBehaviour
     void CmdPlayerRequestChoices()
     {
         network.RegisterPlayerJoin(connectionToClient.connectionId);
+        string logMsg = "Player with ID " + connectionToClient.connectionId.ToString() + " added themselves.\n";
 
+        logMsg += "State of dictionary:\n";
         var choices = new Dictionary<int, int>(network.PlayerChoices);
         foreach (var choice in choices)
         {
             RpcUpdateFromConnected(choice.Key, choice.Value);
+            logMsg += "{"+choice.Key.ToString()+", "+choice.Value.ToString()+"}\n";
         }
+        Debug.Log(logMsg);
     }
 
     [ClientRpc]
@@ -90,6 +98,8 @@ public class Hero_Choice : NetworkBehaviour
     {
         network.RegisterPlayerJoin(id);
         network.SetPlayerTypeLobby(id, choice);
+
+        Debug.Log("Player " + id.ToString() + "was added with choice " + choice.ToString());
     }
 
     [Command]
@@ -100,13 +110,11 @@ public class Hero_Choice : NetworkBehaviour
         RpcSetChoice(connectionToClient.connectionId, choiceIdx);
 
         var choice = network.spawnPrefabs[choiceIdx];
-        Debug.Log("Choice of " + choice.name + " was set at index " + choiceIdx.ToString());
     }
 
     [ClientRpc]
     void RpcSetChoice(int id, int choice)
     {
-        Debug.Log(id.ToString() + " chose " + choice.ToString());
         network.SetPlayerTypeLobby(id, choice);
     }
 
