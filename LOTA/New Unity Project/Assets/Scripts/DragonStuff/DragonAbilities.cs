@@ -16,6 +16,8 @@ public class DragonAbilities : NetworkBehaviour
     public GameObject FlameStrike;
     public GameObject FlameThrower;
     public GameObject MeteorUltimate;
+    private GameObject dragon;
+    
 
     public float bulletSpeed = 10f;
 
@@ -26,17 +28,16 @@ public class DragonAbilities : NetworkBehaviour
         anim = GetComponent<Animator>();
 
         timeStamp = coolDownPeriodofInSeconds;
+      
 
-        if (!isLocalPlayer)
-        {
-            Destroy(this);
-            return;
-        }
     }
 	
 
 	void Update ()
     {
+
+
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane mouseplane = new Plane(transform.up, transform.position);
 
@@ -60,19 +61,15 @@ public class DragonAbilities : NetworkBehaviour
         {
 
             timeStamp = coolDownPeriodofInSeconds;
+            RpcpushbackM1();
 
-            GameObject X = Instantiate(FireBolt, transform.position + transform.forward * distanceQ + transform.up * 4.5f, targrot) as GameObject;
-            X.transform.position = X.transform.position + transform.forward * bulletSpeed;
-
-            
         }
 
         if (Input.GetButtonDown("Fire2") && timeStamp <= 0)
         {
+
             timeStamp = coolDownPeriodofInSeconds;
-            
-            GameObject X = Instantiate(BigFB, transform.position + transform.forward * distanceQ + transform.up * 4.5f, targrot) as GameObject;
-            X.transform.position = X.transform.position + transform.forward * bulletSpeed;
+            RpcpushbackM2();
         }
 
         if (Input.GetButtonDown("Q") && timeStamp <= 0)
@@ -100,4 +97,34 @@ public class DragonAbilities : NetworkBehaviour
             anim.SetTrigger("IsJumping");
         }
     } 
+
+
+    [Command]
+    void CmdSpawnM1FireBlot()
+    {
+        GameObject X = Instantiate(FireBolt, transform.position + transform.forward * distanceQ + transform.up * 4.5f, transform.rotation) as GameObject;
+        X.transform.position = X.transform.position + dragon.transform.forward * bulletSpeed;
+        NetworkServer.Spawn(X);
+    }
+
+    [Command]
+    void CmdSpawnM2FireBlot()
+    {
+        GameObject X = Instantiate(FireBolt, transform.position + transform.forward * distanceQ + transform.up * 4.5f, transform.rotation) as GameObject;
+        X.transform.position = X.transform.position + dragon.transform.forward * bulletSpeed;
+        NetworkServer.Spawn(X);
+    }
+
+    [ClientRpc]
+    void RpcpushbackM1()
+    {
+        CmdSpawnM1FireBlot();
+    }
+
+    [ClientRpc]
+    void RpcpushbackM2()
+    {
+        CmdSpawnM2FireBlot();
+    }
+
 }
