@@ -320,6 +320,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000010354001416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011480882452}
+  m_Layer: 0
+  m_Name: FaceSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000010362519844
 GameObject:
   m_ObjectHideFlags: 1
@@ -3759,6 +3774,19 @@ Transform:
   - {fileID: 4000012758893434}
   m_Father: {fileID: 4000013137001138}
   m_RootOrder: 1
+--- !u!4 &4000011480882452
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010354001416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09, y: 5.91, z: 5.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011762158694}
+  m_RootOrder: 2
 --- !u!4 &4000011499068270
 Transform:
   m_ObjectHideFlags: 1
@@ -3967,6 +3995,7 @@ Transform:
   m_Children:
   - {fileID: 4000014213323984}
   - {fileID: 4000011100981528}
+  - {fileID: 4000011480882452}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000011772175674
@@ -5489,7 +5518,9 @@ MonoBehaviour:
   FlameStrike: {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 2}
   FlameThrower: {fileID: 163286, guid: 383ddf4137fa8634a9265ec6c50d06d7, type: 2}
   MeteorUltimate: {fileID: 165786, guid: d7b50f004cdc74b409188d8b822292fc, type: 2}
+  face: {fileID: 1000010354001416}
   bulletSpeed: 10
+  dir: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114000013911529726
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -50,11 +50,14 @@ namespace DigitalRuby.PyroParticles
 
         private bool collided;
 
+        
+        public Vector3 dir;
+
         private IEnumerator SendCollisionAfterDelay()
         {
             yield return new WaitForSeconds(ProjectileColliderDelay);
 
-            Vector3 dir = ProjectileDirection * ProjectileColliderSpeed;
+            dir = ProjectileDirection * ProjectileColliderSpeed;
             dir = ProjectileColliderObject.transform.rotation * dir;
             ProjectileColliderObject.GetComponent<Rigidbody>().velocity = dir;
         }

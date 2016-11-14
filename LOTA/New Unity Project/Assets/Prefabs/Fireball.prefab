@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11462752}
   - 114: {fileID: 11450262}
   - 114: {fileID: 114000012200105660}
+  - 114: {fileID: 114000013407055098}
   m_Layer: 8
   m_Name: Fireball
   m_TagString: Untagged
@@ -417,6 +418,7 @@ MonoBehaviour:
   ProjectileDestroyParticleSystemsOnCollision:
   - {fileID: 19810394}
   - {fileID: 19886674}
+  dir: {x: 0, y: 0, z: 0}
 --- !u!114 &11462752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5617,7 +5619,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedWireframeHidden: 1
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -5696,7 +5698,23 @@ MonoBehaviour:
     i14: 98
     i15: 252
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114000013407055098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864005fdaa28d904a9696c376cc8baaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LastSendTime: 0
+  m_SyncVarGuard: 0
+  m_MyView: {fileID: 0}
+  scale: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114000014155716574
 MonoBehaviour:
   m_ObjectHideFlags: 1
