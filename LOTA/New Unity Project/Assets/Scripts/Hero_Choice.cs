@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
-
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Hero_Choice : NetworkBehaviour
@@ -11,7 +11,7 @@ public class Hero_Choice : NetworkBehaviour
     public GameObject dragonPrefab;
     public GameObject SkeletonPrefab;
     public GameObject samuraiPrefab;
-
+    private string userName;
     public GameObject CharacterChoice;
 
     Scene lobbyScene;
@@ -19,8 +19,9 @@ public class Hero_Choice : NetworkBehaviour
     void Start()
     {
         network = FindObjectOfType<Choice_Manager>();
+        var input = gameObject.GetComponent<InputField>();
+        userName = input.text;
 
-        
         lobbyScene = SceneManager.GetActiveScene();
     }
 
