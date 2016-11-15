@@ -6,12 +6,21 @@ public class SamAbilities : NetworkBehaviour {
 
     private Animator anim;
 
+    //SPINNING
     public bool isSpin = false;
     private bool isSpinning = false;
 
     public float spinTime;
     private float timeSpin;
 
+    //ULTIMATE
+    public bool isUlt = false;
+    private bool isUlting = false;
+
+    public float ultTime;
+    public float timeUlt;
+
+    //
     private SamMove sammove;
     public GameObject trail;
 
@@ -29,16 +38,28 @@ public class SamAbilities : NetworkBehaviour {
         sammove = gameObject.GetComponent<SamMove>();
 
         timeSpin = spinTime;
+        timeUlt = ultTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        spinTime = spinTime - Time.deltaTime;
+        Spin();
 
+        if (Input.GetMouseButtonDown(0) && isSpin == false)
+        {
+            anim.SetTrigger("isAttack");
+        }
+    }
+
+    void Spin()
+    {
         if (isSpinning == true)
         {
             transform.Rotate(0f, -20f, 0f);
+            spinTime = spinTime - Time.deltaTime;
+
+            anim.SetBool("isMoving", false);
         }
 
         if (spinTime <= 0)
@@ -50,17 +71,20 @@ public class SamAbilities : NetworkBehaviour {
             spinTime = timeSpin;
         }
 
-        if (Input.GetMouseButtonDown(0) && isSpin == false)
-        {
-            anim.SetTrigger("isAttack");
-        }
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             isSpin = true;
             isSpinning = true;
             sammove.speed = 15f;
             trail.SetActive(true);
+        }
+    }
+
+    void Ult()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            
         }
     }
 }

@@ -1544,7 +1544,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012547281192}
   m_LocalRotation: {x: -0, y: 0.9992422, z: -0, w: -0.038924236}
-  m_LocalPosition: {x: -105.625885, y: 2.5951376, z: -25.046692}
+  m_LocalPosition: {x: -13.697296, y: 10.785571, z: 0.39266968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 184.33398, z: 0}
   m_Children:
@@ -2695,8 +2695,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 8.65, z: 1.39}
-  m_Center: {x: 0, y: 4.69, z: -0.05}
+  m_Size: {x: 2.2, y: 8.89, z: 1.39}
+  m_Center: {x: 0, y: 4.43, z: -0.05}
 --- !u!95 &95000013665922368
 Animator:
   serializedVersion: 3
@@ -2859,7 +2859,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8.51
+  m_Radius: 8
   m_Center: {x: 0, y: 2.86, z: 0}
 --- !u!137 &137000011281365858
 SkinnedMeshRenderer:

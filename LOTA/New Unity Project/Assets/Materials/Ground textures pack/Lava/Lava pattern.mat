@@ -25,18 +25,18 @@ Material:
         name: _Illum
       second:
         m_Texture: {fileID: 2800000, guid: c65e186198f501046a0aba89c6335cac, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Scale: {x: 7, y: 7}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
         m_Texture: {fileID: 2800000, guid: cc2d009b31ce2134a9438a34a78632a0, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Scale: {x: 7, y: 7}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _Emission
-      second: 1
+      second: 10
     - first:
         name: _EmissionLM
       second: 1
