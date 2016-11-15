@@ -34,6 +34,11 @@ public class Skeleton_abilities : NetworkBehaviour
         }
 
         QAbility();
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            anim.SetTrigger("RightClick");
+        }
     }
 
     private void QAbility()
