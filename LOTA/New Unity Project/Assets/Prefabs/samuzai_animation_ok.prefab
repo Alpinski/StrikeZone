@@ -2790,6 +2790,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpin: 0
   spinTime: 8
+  isUlt: 0
+  ultTime: 5
   trail: {fileID: 1000013404594974}
 --- !u!114 &114000013611510682
 MonoBehaviour:
