@@ -19,9 +19,6 @@ public class Hero_Choice : NetworkBehaviour
     void Start()
     {
         network = FindObjectOfType<Choice_Manager>();
-        //var input = gameObject.GetComponent<InputField>();
-        //userName = input.text;
-
         lobbyScene = SceneManager.GetActiveScene();
     }
 
@@ -30,16 +27,19 @@ public class Hero_Choice : NetworkBehaviour
         if (network == null)
             network = FindObjectOfType<Choice_Manager>();
 
-        if(isClient)
+        if (isClient)
             CmdPlayerRequestChoices();
     }
 
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-
+        var input = FindObjectOfType<UsernameChoice>();
+        userName = input.nameBox.text;
         SceneManager.activeSceneChanged += SceneChanged;
         transform.GetChild(0).gameObject.SetActive(true);
+
+        CmdPushUsernameToServer(userName);
 
         PlayerJoinInit();
     }
@@ -51,7 +51,7 @@ public class Hero_Choice : NetworkBehaviour
 
     void SceneChanged(Scene start, Scene end)
     {
-        if(end == lobbyScene)
+        if (end == lobbyScene)
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -76,6 +76,13 @@ public class Hero_Choice : NetworkBehaviour
             Debug.LogError("Choice of character has not been registered. " + choice.name);
         }
         CmdSetPlayerChoice(choiceId);
+    }
+
+    [Command]
+    void CmdPushUsernameToServer(string x)
+    {
+        GameSettings.Instance.AddPlayerName(connectionToClient.connectionId, x);
+
     }
 
     [Command]
