@@ -19,8 +19,8 @@ public class Hero_Choice : NetworkBehaviour
     void Start()
     {
         network = FindObjectOfType<Choice_Manager>();
-        var input = gameObject.GetComponent<InputField>();
-        userName = input.text;
+        //var input = gameObject.GetComponent<InputField>();
+        //userName = input.text;
 
         lobbyScene = SceneManager.GetActiveScene();
     }

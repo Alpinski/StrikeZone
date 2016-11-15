@@ -123,27 +123,27 @@ public class DragonAbilities : NetworkBehaviour
     void CmdSpawnM1FireBlot(Quaternion rot)
     {
         GameObject X = Instantiate(FireBolt, face.transform.position, rot) as GameObject;
+        var ohBehave = X.GetComponentInChildren<RotationCorrector>();
+        ohBehave.dir = rot;
         NetworkServer.Spawn(X);
-        NetworkBehaviour ohBehave = X.GetComponent<NetworkBehaviour>();
-        RpcRotFix(ohBehave.netId);
     }
 
     [Command]
     void CmdSpawnM2FireBall(Quaternion rot)
     {
         GameObject X = Instantiate(BigFB, face.transform.position, rot) as GameObject;
+        var ohBehave = X.GetComponentInChildren<RotationCorrector>();
+        ohBehave.dir = rot;
         NetworkServer.Spawn(X);
-        NetworkBehaviour ohBehave = X.GetComponent<NetworkBehaviour>();
-        RpcRotFix(ohBehave.netId);
     }
 
     [Command]
     void CmdSpawnQFlameThrower(Quaternion rot)
     {
         GameObject X = Instantiate(FlameThrower, face.transform.position, rot) as GameObject;
+        var ohBehave = X.GetComponentInChildren<RotationCorrector>();
+        ohBehave.dir = rot;
         NetworkServer.Spawn(X);
-        NetworkBehaviour ohBehave = X.GetComponent<NetworkBehaviour>();
-        RpcRotFix(ohBehave.netId);
     }
 
     [Command]
