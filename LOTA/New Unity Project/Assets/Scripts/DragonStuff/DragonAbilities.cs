@@ -124,7 +124,8 @@ public class DragonAbilities : NetworkBehaviour
     {
         GameObject X = Instantiate(FireBolt, face.transform.position, rot) as GameObject;
         NetworkServer.Spawn(X);
-        RpcRotFix(X);
+        NetworkBehaviour ohBehave = X.GetComponent<NetworkBehaviour>();
+        RpcRotFix(ohBehave.netId);
     }
 
     [Command]
@@ -132,7 +133,8 @@ public class DragonAbilities : NetworkBehaviour
     {
         GameObject X = Instantiate(BigFB, face.transform.position, rot) as GameObject;
         NetworkServer.Spawn(X);
-        RpcRotFix(X);
+        NetworkBehaviour ohBehave = X.GetComponent<NetworkBehaviour>();
+        RpcRotFix(ohBehave.netId);
     }
 
     [Command]
@@ -140,7 +142,8 @@ public class DragonAbilities : NetworkBehaviour
     {
         GameObject X = Instantiate(FlameThrower, face.transform.position, rot) as GameObject;
         NetworkServer.Spawn(X);
-        RpcRotFix(X);
+        NetworkBehaviour ohBehave = X.GetComponent<NetworkBehaviour>();
+        RpcRotFix(ohBehave.netId);
     }
 
     [Command]
@@ -159,8 +162,9 @@ public class DragonAbilities : NetworkBehaviour
     }
 
     [ClientRpc]
-    void RpcRotFix(GameObject y)
+    void RpcRotFix(NetworkInstanceId y)
     {
-        y.transform.rotation = transform.rotation;
+        GameObject yy = NetworkServer.FindLocalObject(y);
+        yy.transform.rotation = transform.rotation;
     }
 }

@@ -30,7 +30,6 @@ GameObject:
   - 82: {fileID: 8299452}
   - 82: {fileID: 8285056}
   - 114: {fileID: 114000012018505558}
-  - 114: {fileID: 114000013724261940}
   m_Layer: 0
   m_Name: Firebolt
   m_TagString: Untagged
@@ -436,7 +435,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106706}
-  serializedVersion: 4
+  serializedVersion: 2
   lengthInSec: 0.1
   startDelay:
     scalar: 0
@@ -474,13 +473,12 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
+  randomSeed: 0
   looping: 0
   prewarm: 0
   playOnAwake: 0
   moveWithTransform: 0
-  autoRandomSeed: 1
   scalingMode: 2
-  randomSeed: 0
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2175,7 +2173,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150962}
-  serializedVersion: 4
+  serializedVersion: 2
   lengthInSec: 0.5
   startDelay:
     scalar: 0
@@ -2213,13 +2211,12 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
+  randomSeed: 0
   looping: 0
   prewarm: 0
   playOnAwake: 0
   moveWithTransform: 0
-  autoRandomSeed: 1
   scalingMode: 2
-  randomSeed: 0
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -4026,19 +4023,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 250
---- !u!114 &114000013724261940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 864005fdaa28d904a9696c376cc8baaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LastSendTime: 0
-  m_SyncVarGuard: 0
-  m_MyView: {fileID: 0}
-  scale: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 0}
