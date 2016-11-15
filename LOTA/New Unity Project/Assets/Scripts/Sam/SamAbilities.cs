@@ -8,21 +8,21 @@ public class SamAbilities : NetworkBehaviour {
 
     //SPINNING
     public bool isSpin = false;
-    private bool isSpinning = false;
 
     public float spinTime;
     private float timeSpin;
 
     //ULTIMATE
     public bool isUlt = false;
-    private bool isUlting = false;
 
     public float ultTime;
-    public float timeUlt;
+    private float timeUlt;
 
     //
     private SamMove sammove;
     public GameObject trail;
+
+    private GameObject otherPlayer;
 
     // Use this for initialization
     void Start () {
@@ -46,7 +46,9 @@ public class SamAbilities : NetworkBehaviour {
     {
         Spin();
 
-        if (Input.GetMouseButtonDown(0) && isSpin == false)
+        Ult();
+
+        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false)
         {
             anim.SetTrigger("isAttack");
         }
@@ -54,17 +56,21 @@ public class SamAbilities : NetworkBehaviour {
 
     void Spin()
     {
-        if (isSpinning == true)
+        if (isSpin == true)
         {
             transform.Rotate(0f, -20f, 0f);
             spinTime = spinTime - Time.deltaTime;
+
+            if (sammove.speed <= 45f)
+            {
+                sammove.speed = sammove.speed + 0.1f;
+            }
 
             anim.SetBool("isMoving", false);
         }
 
         if (spinTime <= 0)
         {
-            isSpinning = false;
             isSpin = false;
             sammove.speed = 30f;
             trail.SetActive(false);
@@ -74,9 +80,8 @@ public class SamAbilities : NetworkBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             isSpin = true;
-            isSpinning = true;
-            sammove.speed = 15f;
             trail.SetActive(true);
+            sammove.speed = 20f;
         }
     }
 
@@ -84,7 +89,23 @@ public class SamAbilities : NetworkBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            
+            isUlt = true;
+            otherPlayer = GameObject.FindWithTag("Player");
+            Debug.Log(":p");
+        }
+
+        if (isUlt == true)
+        {
+            transform.position = new Vector3 (otherPlayer.transform.position.x + 5, otherPlayer.transform.position.y, otherPlayer.transform.position.z);
+
+            ultTime -= Time.deltaTime;
+        }
+
+        if (ultTime <= 0)
+        {
+            isUlt = false;
+
+            ultTime = timeUlt;
         }
     }
 }
