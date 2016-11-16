@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  c_networkScript: {fileID: 0}
+  c_networkScript: {fileID: 114000010565369504}
 --- !u!114 &114000012172189824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577f862810af92a4989ee5c20aa59bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 10
+  smoothTime: 7
 --- !u!114 &114000012285739232
 MonoBehaviour:
   m_ObjectHideFlags: 1

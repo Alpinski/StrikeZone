@@ -75,7 +75,7 @@ public class Skeleton_abilities : NetworkBehaviour
         if (QAbillityUseBool == true)
         {
 
-            transform.position = Vector3.SmoothDamp(transform.position, tragetPos, ref velocity, smoothTime, 50, 50);
+            transform.position = Vector3.SmoothDamp(transform.position, tragetPos, ref velocity, smoothTime);
             velocity = Vector3.zero;
 
             if (QAblittyCD <= 0)
