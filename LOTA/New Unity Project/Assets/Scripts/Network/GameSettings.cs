@@ -66,4 +66,13 @@ public class GameSettings : MonoBehaviour
 
         return true;
     }
+
+    public PlayerInfo GetPlayerInfo(int id)
+    {
+        if(!info.ContainsKey(id))
+        {
+            return null;
+        }
+        return info[id];
+    }
 }

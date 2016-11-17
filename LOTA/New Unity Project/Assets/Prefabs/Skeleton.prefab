@@ -495,6 +495,7 @@ GameObject:
   - 114: {fileID: 114000012172189824}
   - 114: {fileID: 114000013058021828}
   - 114: {fileID: 114000012830427938}
+  - 114: {fileID: 114000014193534732}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Player
@@ -1332,6 +1333,19 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &114000014193534732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013317273666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a0507d01b84a40b357b241cfa6f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPanelPrefab: {fileID: 1000013925073272, guid: d8bb034627aea8841bbcfb3865da34ac,
+    type: 2}
 --- !u!137 &137000012532103944
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

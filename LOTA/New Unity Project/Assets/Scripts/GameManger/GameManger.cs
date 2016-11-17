@@ -7,9 +7,6 @@ public class GameManger : NetworkBehaviour
 {
     public Canvas pauseCanvas;
 
-
-
-
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))

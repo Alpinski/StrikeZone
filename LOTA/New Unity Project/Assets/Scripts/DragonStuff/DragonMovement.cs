@@ -7,7 +7,7 @@ public class DragonMovement : NetworkBehaviour
     private Animator anim;
     public float speed;
     private GameObject cam;
-    
+
 	void Start ()
     {
         anim = GetComponent<Animator>();

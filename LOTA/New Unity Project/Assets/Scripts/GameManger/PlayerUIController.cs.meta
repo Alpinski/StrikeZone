@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b21a0507d01b84a40b357b241cfa6f9b
+timeCreated: 1479377907
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - UIPanelPrefab: {fileID: 1000013925073272, guid: d8bb034627aea8841bbcfb3865da34ac,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

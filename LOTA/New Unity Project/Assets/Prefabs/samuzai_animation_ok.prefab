@@ -720,6 +720,7 @@ GameObject:
   - 114: {fileID: 114000011768272668}
   - 114: {fileID: 114000013549074368}
   - 114: {fileID: 114000013611510682}
+  - 114: {fileID: 114000010004823582}
   m_Layer: 0
   m_Name: samuzai_animation_ok
   m_TagString: Player
@@ -2764,6 +2765,19 @@ TrailRenderer:
       rgba: 2046820607
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114000010004823582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012547281192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a0507d01b84a40b357b241cfa6f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPanelPrefab: {fileID: 1000013925073272, guid: d8bb034627aea8841bbcfb3865da34ac,
+    type: 2}
 --- !u!114 &114000011768272668
 MonoBehaviour:
   m_ObjectHideFlags: 1

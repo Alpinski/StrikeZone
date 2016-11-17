@@ -118,6 +118,7 @@ GameObject:
   - 114: {fileID: 114000013911529726}
   - 65: {fileID: 65000013446879588}
   - 54: {fileID: 54000012682468982}
+  - 114: {fileID: 114000011060133970}
   m_Layer: 0
   m_Name: BGE_Dragon_2.7_Animation_Only
   m_TagString: Player
@@ -5501,6 +5502,19 @@ MonoBehaviour:
     i15: 237
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114000011060133970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010102735610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a0507d01b84a40b357b241cfa6f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPanelPrefab: {fileID: 1000013925073272, guid: d8bb034627aea8841bbcfb3865da34ac,
+    type: 2}
 --- !u!114 &114000011118074702
 MonoBehaviour:
   m_ObjectHideFlags: 1
