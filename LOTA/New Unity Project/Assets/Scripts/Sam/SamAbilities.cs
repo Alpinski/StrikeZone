@@ -14,16 +14,22 @@ public class SamAbilities : NetworkBehaviour {
 
     //ULTIMATE
     public bool isUlt = false;
+    private bool isTele = false;
 
     public float ultTime;
     private float timeUlt;
+    private float teleTime = 0.25f;
 
     //
     private SamMove sammove;
+
     public GameObject trail;
 
     private GameObject[] otherPlayers;
     private GameObject nearPlayer;
+
+    private float xRand;
+    private float zRand;
 
     // Use this for initialization
     void Start () {
@@ -117,7 +123,29 @@ public class SamAbilities : NetworkBehaviour {
 
         if (isUlt == true)
         {
-            transform.position = new Vector3 (nearPlayer.transform.position.x + 5, nearPlayer.transform.position.y, nearPlayer.transform.position.z);
+            transform.position = new Vector3 (nearPlayer.transform.position.x + xRand, 
+                                                nearPlayer.transform.position.y,
+                                                nearPlayer.transform.position.z + zRand);
+
+            if (isTele == true)
+            {
+                xRand = RandRand(Random.Range(-4f, -2f), Random.Range(2f, 4f));
+                zRand = RandRand(Random.Range(-4f, -2f), Random.Range(2f, 4f));
+
+                isTele = false;
+            }
+
+            if (teleTime >= 0.25f)
+            {
+                isTele = true;
+
+                teleTime = 0;
+            }
+
+            if (teleTime <= 0.25f)
+            {
+                teleTime += Time.deltaTime;
+            }
 
             ultTime -= Time.deltaTime;
         }
@@ -129,4 +157,17 @@ public class SamAbilities : NetworkBehaviour {
             ultTime = timeUlt;
         }
     }
+
+    private float RandRand(float x, float y)
+    { 
+        int stuff = Random.Range(0, 2);
+        if (stuff == 0)
+        {
+            return x;
+        }
+        else
+        {
+            return y;
+        }
+    }   
 }
