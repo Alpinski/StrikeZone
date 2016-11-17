@@ -69,16 +69,12 @@ public class Choice_Manager : NetworkLobbyManager
     }
 
 
-    void OnLevelWasLoaded (int level)
+    void OnClientSceneChanged ()
     {
-        if(level == 0)
-        {
+        
             SetupMenuSceneButtons();
-        }
-        else
-        {
             SetupOtherScenenButtons();
-        }
+        
     }
 
     void SetupMenuSceneButtons()

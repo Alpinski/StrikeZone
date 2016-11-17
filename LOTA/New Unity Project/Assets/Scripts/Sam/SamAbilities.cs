@@ -22,7 +22,8 @@ public class SamAbilities : NetworkBehaviour {
     private SamMove sammove;
     public GameObject trail;
 
-    private GameObject otherPlayer;
+    private GameObject[] otherPlayers;
+    private GameObject nearPlayer;
 
     // Use this for initialization
     void Start () {
@@ -90,13 +91,33 @@ public class SamAbilities : NetworkBehaviour {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             isUlt = true;
-            otherPlayer = GameObject.FindWithTag("Player");
-            Debug.Log(":p");
+
+            otherPlayers = GameObject.FindGameObjectsWithTag("Player");
+
+            GameObject min = null;
+            float mindis = Mathf.Infinity;
+            Vector3 currentPos = transform.position;
+
+            foreach (GameObject t in otherPlayers)
+            {
+                if (t != gameObject)
+                {
+                    float distance = Vector3.Distance(t.transform.position, currentPos);
+
+                    if (distance < mindis)
+                    {
+                        min = t;
+                        nearPlayer = min;
+
+                        mindis = distance;
+                    }
+                }
+            }
         }
 
         if (isUlt == true)
         {
-            transform.position = new Vector3 (otherPlayer.transform.position.x + 5, otherPlayer.transform.position.y, otherPlayer.transform.position.z);
+            transform.position = new Vector3 (nearPlayer.transform.position.x + 5, nearPlayer.transform.position.y, nearPlayer.transform.position.z);
 
             ultTime -= Time.deltaTime;
         }
