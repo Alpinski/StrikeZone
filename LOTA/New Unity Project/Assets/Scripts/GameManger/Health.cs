@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
     public float HP = 2000;
     public float CurrentHp;
     private bool isDead;
+
     
 
 
@@ -26,14 +28,31 @@ public class Health : MonoBehaviour
         Debug.Log("Hit" +CurrentHp);
         if (CurrentHp <= 0 && !isDead)
         {
+
             Dead();
+            if(isDead == true)
+            {
+                RpcDestroy();
+            }
         }
     }
 
     private void Dead()
     {
+
         isDead = true;
         gameObject.SetActive(false);
         Debug.Log("DED");
     }
+
+
+    [ClientRpc]
+    void RpcDestroy()
+    {
+        Destroy(gameObject);
+    }
+
+
+
+
 }
