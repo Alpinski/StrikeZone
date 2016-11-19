@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 
@@ -8,6 +8,7 @@ public class Skeleton_movement : NetworkBehaviour
     public float speed;
     private GameObject cam;
     public PlayerSeverPos c_networkScript;
+    public float stunTime;
 
     // Use this for initialization
     void Start()
@@ -25,6 +26,7 @@ public class Skeleton_movement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float H = Input.GetAxis("Horizontal");
         float V = Input.GetAxis("Vertical");
 
@@ -39,8 +41,12 @@ public class Skeleton_movement : NetworkBehaviour
 
         }
 
-        transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
-        transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
+        if (gameObject.GetComponent<Health>().Stuned <= 0)
+        {
+            transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
+            transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
+        }
+
 
         cam.transform.position = transform.position + new Vector3(0, 50, -7);
 

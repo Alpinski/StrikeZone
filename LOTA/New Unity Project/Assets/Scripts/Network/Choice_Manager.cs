@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
@@ -47,7 +47,7 @@ public class Choice_Manager : NetworkLobbyManager
         NetworkManager.singleton.StartHost();
 
     }
-
+    
 
     public void JoinGame()
     {

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 
@@ -30,6 +30,19 @@ public class SamAbilities : NetworkBehaviour {
 
     private float xRand;
     private float zRand;
+
+    PlayerUIController uiControl;
+
+
+
+    void Awake()
+    {
+        uiControl = GetComponent<PlayerUIController>();
+    }
+
+
+
+
 
     // Use this for initialization
     void Start () {
@@ -169,5 +182,38 @@ public class SamAbilities : NetworkBehaviour {
         {
             return y;
         }
-    }   
+    }
+
+
+
+    void LateUpdate()
+    {
+        uiControl.UpdatePosition(transform.position);
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+
+        CmdFetchPlayerInfo();
+    }
+
+
+    [Command]
+    void CmdFetchPlayerInfo()
+    {
+        var info = GameSettings.Instance.GetPlayerInfo(connectionToClient.connectionId);
+        uiControl.SetPlayerName(info.userName);
+        RpcUpdatePlayerUI(info.userName);
+    }
+
+    [ClientRpc]
+    void RpcUpdatePlayerUI(string name)
+    {
+        uiControl.SetPlayerName(name);
+    }
+
+
+
+
 }

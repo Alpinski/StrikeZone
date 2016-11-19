@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 
@@ -7,13 +7,17 @@ public class Health : NetworkBehaviour
     public float HP = 2000;
     public float CurrentHp;
     private bool isDead;
-
+    [HideInInspector]
+    public float Stuned;
     
 
 
-    void Start()
+    void Update()
     {
-        
+        if (Stuned > 0)
+        {
+            Stuned -= Time.deltaTime;
+        }
     }
 
     private void OnEnable()
@@ -30,11 +34,14 @@ public class Health : NetworkBehaviour
         {
 
             Dead();
-            if(isDead == true)
-            {
-                RpcDestroy();
-            }
+            CmdCheckIsDead();
         }
+    }
+
+    [Command]
+    void CmdCheckIsDead()
+    {
+       RpcDestroy();
     }
 
     private void Dead()

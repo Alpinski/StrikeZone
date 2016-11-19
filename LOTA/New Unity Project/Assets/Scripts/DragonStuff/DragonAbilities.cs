@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 
@@ -148,6 +148,7 @@ public class DragonAbilities : NetworkBehaviour
     void RpcUpdatePlayerUI(string name)
     {
         uiControl.SetPlayerName(name);
+        Debug.Log(name);
     }
 
     [Command]

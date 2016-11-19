@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 
@@ -7,8 +7,9 @@ public class DragonMovement : NetworkBehaviour
     private Animator anim;
     public float speed;
     private GameObject cam;
+    public float stunTime;
 
-	void Start ()
+    void Start ()
     {
         anim = GetComponent<Animator>();
         cam = Camera.main.gameObject;
@@ -34,8 +35,11 @@ public class DragonMovement : NetworkBehaviour
             anim.SetBool("IsMoving", false);
         }
 
-        transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
-        transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
+        if (gameObject.GetComponent<Health>().Stuned <= 0)
+        {
+            transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
+            transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
+        }
 
         cam.transform.position = transform.position + new Vector3(0, 70, -5);
         

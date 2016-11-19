@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 
@@ -8,6 +8,7 @@ public class SamMove : NetworkBehaviour {
     public float speed;
     private GameObject cam;
     private SamAbilities samabilities;
+    public float stunTime;
 
     // Use this for initialization
     void Start()
@@ -37,8 +38,11 @@ public class SamMove : NetworkBehaviour {
             anim.SetBool("isMoving", false);
         }
 
-        transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
-        transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
+        if (gameObject.GetComponent<Health>().Stuned <= 0)
+        {
+            transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
+            transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
+        }
 
         cam.transform.position = transform.position + new Vector3(0, 50, -7);
 
