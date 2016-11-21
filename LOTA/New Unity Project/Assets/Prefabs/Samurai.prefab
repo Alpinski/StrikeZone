@@ -722,7 +722,7 @@ GameObject:
   - 114: {fileID: 114000013611510682}
   - 114: {fileID: 114000010004823582}
   m_Layer: 0
-  m_Name: samuzai_animation_ok
+  m_Name: Samurai
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

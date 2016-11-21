@@ -22,6 +22,8 @@ public class Skeleton_abilities : NetworkBehaviour
     private bool EButtonDown = false;
 
 
+    public GameObject sword;
+
     [SyncVar]
     public Quaternion dir;
 
@@ -52,11 +54,13 @@ public class Skeleton_abilities : NetworkBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 anim.SetTrigger("IsAttacking");
+                sword.GetComponent<SwordDamage>().Damage = 500;
             }
 
             if (Input.GetMouseButtonDown(1))
             {
                 anim.SetTrigger("RightClick");
+                sword.GetComponent<SwordDamage>().Damage = 750;
             }
 
             QAbility();

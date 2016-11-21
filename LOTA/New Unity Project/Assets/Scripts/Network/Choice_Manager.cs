@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class Choice_Manager : NetworkLobbyManager
 {
+
+
+    public GameObject Lobby;
+
     Dictionary<int, int> currentPlayers = new Dictionary<int, int>();
 
     public bool RegisterPlayerJoin(int id)
@@ -17,6 +21,10 @@ public class Choice_Manager : NetworkLobbyManager
         }
 
         return false;
+    }
+
+    void Start()
+    {
     }
 
     public Dictionary<int, int> PlayerChoices
@@ -47,7 +55,11 @@ public class Choice_Manager : NetworkLobbyManager
         NetworkManager.singleton.StartHost();
 
     }
-    
+
+    public void startSever()
+    {
+        NetworkManager.singleton.StartServer();
+    }
 
     public void JoinGame()
     {
@@ -74,7 +86,6 @@ public class Choice_Manager : NetworkLobbyManager
         
             SetupMenuSceneButtons();
             SetupOtherScenenButtons();
-        
     }
 
     void SetupMenuSceneButtons()

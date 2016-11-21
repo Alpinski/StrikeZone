@@ -14,12 +14,27 @@ public class Hero_Choice : NetworkBehaviour
     private string userName;
     public GameObject CharacterChoice;
 
+    public Text player1;
+    public Text player2;
+    public Text player3;
+    public Text player4;
+
+    private string choiceName;
+
+    private NetworkLobbyPlayer me;
+
+    public GameObject lobby;
+
     Scene lobbyScene;
+
+
 
     void Start()
     {
         network = FindObjectOfType<Choice_Manager>();
         lobbyScene = SceneManager.GetActiveScene();
+
+        me = gameObject.GetComponent<NetworkLobbyPlayer>();
     }
 
     void PlayerJoinInit()
@@ -129,27 +144,64 @@ public class Hero_Choice : NetworkBehaviour
     public void Dragon()
     {
         CharacterChoice = dragonPrefab;
-        network.showLobbyGUI = true;
         SetPlayerChoice(CharacterChoice);
+        choiceName = CharacterChoice.name;
     }
 
   public void Skeleton()
     {
         CharacterChoice = SkeletonPrefab;
-        network.showLobbyGUI = true;
         SetPlayerChoice(CharacterChoice);
+        choiceName = CharacterChoice.name;
     }
 
     //The Samurai prefab plugged into this script is causing problems
    public void Samurai()
     {
         CharacterChoice = samuraiPrefab;
-        network.showLobbyGUI = true;
         SetPlayerChoice(CharacterChoice);
+        choiceName = CharacterChoice.name;
     }
 
 
+    public void ready (bool x)
+    {
+        if (x)
+        {
+            me.SendReadyToBeginMessage();
+
+            if(me.slot == 1)
+            {
+                player1.text = choiceName;
+            }
+            if (me.slot == 2)
+            {
+                player2.text = choiceName;
+            }
+            if (me.slot == 3)
+            {
+                player3.text = choiceName;
+            }
+            if (me.slot == 4)
+            {
+                player4.text = choiceName;
+            }
+
+        }
+        else
+        {
+            me.SendNotReadyToBeginMessage();
+        }
+        }
+    
 
 
+
+
+
+    void OnSeverSceneChanged()
+    {
+        lobby.SetActive(false);
+    }
 
 }

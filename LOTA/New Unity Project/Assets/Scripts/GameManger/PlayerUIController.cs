@@ -30,7 +30,7 @@ public class PlayerUIController : MonoBehaviour
     {
         if (uiInstance == null)
         {
-            Start();
+            Start(); 
         }
         playerNameBox.text = name;
     }

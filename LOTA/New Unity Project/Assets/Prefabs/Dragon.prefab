@@ -120,7 +120,7 @@ GameObject:
   - 54: {fileID: 54000012682468982}
   - 114: {fileID: 114000011060133970}
   m_Layer: 0
-  m_Name: BGE_Dragon_2.7_Animation_Only
+  m_Name: Dragon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
