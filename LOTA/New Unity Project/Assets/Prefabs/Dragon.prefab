@@ -119,6 +119,7 @@ GameObject:
   - 65: {fileID: 65000013446879588}
   - 54: {fileID: 54000012682468982}
   - 114: {fileID: 114000011060133970}
+  - 114: {fileID: 114000012873775276}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Player
@@ -5537,6 +5538,25 @@ MonoBehaviour:
   face: {fileID: 1000010354001416}
   bulletSpeed: 10
   dir: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114000012873775276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010102735610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95000011446795848}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114000013911529726
 MonoBehaviour:
   m_ObjectHideFlags: 1
