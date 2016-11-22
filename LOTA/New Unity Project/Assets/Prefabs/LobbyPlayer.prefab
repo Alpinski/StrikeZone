@@ -41,11 +41,11 @@ GameObject:
   - 114: {fileID: 114000011655554074}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Lobby
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000010290603636
 GameObject:
   m_ObjectHideFlags: 1
@@ -962,7 +962,6 @@ MonoBehaviour:
   player2: {fileID: 114000014038393276}
   player3: {fileID: 114000012344192876}
   player4: {fileID: 114000013348408326}
-  lobby: {fileID: 1000010238195996}
 --- !u!114 &114000012820761840
 MonoBehaviour:
   m_ObjectHideFlags: 1

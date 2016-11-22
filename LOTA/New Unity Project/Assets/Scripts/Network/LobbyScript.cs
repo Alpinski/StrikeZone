@@ -8,8 +8,6 @@ public class LobbyScript : NetworkBehaviour {
     
     private GameObject player;
 
-    private string username;
-
     private Text playerText;
 
     [SyncVar]
@@ -19,6 +17,16 @@ public class LobbyScript : NetworkBehaviour {
 
     private float loadTimer = 2;
 
+    private int prevPlayerCount;
+
+    NetworkLobbyManager lobbyMan;
+
+    void Start()
+    {
+        lobbyMan = FindObjectOfType<NetworkLobbyManager>();
+        prevPlayerCount = lobbyMan.lobbySlots.Length;
+    }
+
     void OnEnable()
     {
 
@@ -27,10 +35,34 @@ public class LobbyScript : NetworkBehaviour {
     }
 
     [Command]
+    void CmdGetAllUserNames()
+    {
+        for(int i = 0; i < lobbyMan.lobbySlots.Length; ++i)
+        {
+            var ls = lobbyMan.lobbySlots[i];
+            var info = GameSettings.Instance.GetPlayerInfo(ls.connectionToClient.connectionId);
+        }
+
+       
+
+       
+    }
+
+    [ClientRpc]
+    void  RpcPlaceUsername(int id, string info)
+    {
+        if(id == 1)
+        {
+            GameObject.Find("Player1").GetComponent<Text>().text = info;
+        }
+  
+    }
+
+    [Command]
     void CmdGetPlayerInfo()
     {
         var info = GameSettings.Instance.GetPlayerInfo(connectionToClient.connectionId);
-       SetName(info.userName);
+        SetName(info.userName);
         RpcUpdateUI(info.userName);
     }
 
@@ -52,6 +84,11 @@ public class LobbyScript : NetworkBehaviour {
 	void Update ()
 
     {
+        if(prevPlayerCount != lobbyMan.lobbySlots.Length)
+        {
+            prevPlayerCount = lobbyMan.lobbySlots.Length;
+
+        }
 
         loadTimer -= Time.deltaTime;
         if (temp == true)
@@ -85,14 +122,12 @@ public class LobbyScript : NetworkBehaviour {
                 }
                 Debug.Log(NumberofPlayers);
 
-                if (isLocalPlayer)
+                if (isClient)
                 {
-                 CmdGetPlayerInfo();
+                    CmdGetPlayerInfo();
                     Debug.Log("running cmd");
                 }
                 
-                playerText.text = username;
-                Debug.Log(username);
                 Debug.Log(playerText.text);
                 Debug.Log(player);
                 temp = false;

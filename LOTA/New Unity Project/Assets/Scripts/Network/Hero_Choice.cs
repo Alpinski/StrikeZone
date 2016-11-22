@@ -23,7 +23,7 @@ public class Hero_Choice : NetworkBehaviour
 
     private NetworkLobbyPlayer me;
 
-    public GameObject lobby;
+    private GameObject lobby;
 
     Scene lobbyScene;
 
@@ -73,7 +73,6 @@ public class Hero_Choice : NetworkBehaviour
         else
         {
             transform.GetChild(0).gameObject.SetActive(false);
-            network.showLobbyGUI = false;
         }
     }
 
@@ -97,7 +96,6 @@ public class Hero_Choice : NetworkBehaviour
     void CmdPushUsernameToServer(string x)
     {
         GameSettings.Instance.AddPlayerName(connectionToClient.connectionId, x);
-
     }
 
     [Command]
@@ -131,14 +129,13 @@ public class Hero_Choice : NetworkBehaviour
         network.SetPlayerTypeLobby(connectionToClient.connectionId, choiceIdx);
 
         RpcSetChoice(connectionToClient.connectionId, choiceIdx);
-
-        var choice = network.spawnPrefabs[choiceIdx];
     }
 
     [ClientRpc]
     void RpcSetChoice(int id, int choice)
     {
         network.SetPlayerTypeLobby(id, choice);
+        Debug.Log("Player " + id.ToString() + "was added with choice " + choice.ToString());
     }
 
     public void Dragon()
@@ -146,6 +143,23 @@ public class Hero_Choice : NetworkBehaviour
         CharacterChoice = dragonPrefab;
         SetPlayerChoice(CharacterChoice);
         choiceName = CharacterChoice.name;
+
+        if (me.slot == 1)
+        {
+            player1.text = choiceName;
+        }
+        if (me.slot == 2)
+        {
+            player2.text = choiceName;
+        }
+        if (me.slot == 3)
+        {
+            player3.text = choiceName;
+        }
+        if (me.slot == 4)
+        {
+            player4.text = choiceName;
+        }
     }
 
   public void Skeleton()
@@ -153,6 +167,23 @@ public class Hero_Choice : NetworkBehaviour
         CharacterChoice = SkeletonPrefab;
         SetPlayerChoice(CharacterChoice);
         choiceName = CharacterChoice.name;
+
+        if (me.slot == 1)
+        {
+            player1.text = choiceName;
+        }
+        if (me.slot == 2)
+        {
+            player2.text = choiceName;
+        }
+        if (me.slot == 3)
+        {
+            player3.text = choiceName;
+        }
+        if (me.slot == 4)
+        {
+            player4.text = choiceName;
+        }
     }
 
     //The Samurai prefab plugged into this script is causing problems
@@ -161,6 +192,24 @@ public class Hero_Choice : NetworkBehaviour
         CharacterChoice = samuraiPrefab;
         SetPlayerChoice(CharacterChoice);
         choiceName = CharacterChoice.name;
+
+
+            if (me.slot == 1)
+        {
+            player1.text = choiceName;
+        }
+        if (me.slot == 2)
+        {
+            player2.text = choiceName;
+        }
+        if (me.slot == 3)
+        {
+            player3.text = choiceName;
+        }
+        if (me.slot == 4)
+        {
+            player4.text = choiceName;
+        }
     }
 
 
@@ -169,23 +218,6 @@ public class Hero_Choice : NetworkBehaviour
         if (x)
         {
             me.SendReadyToBeginMessage();
-
-            if(me.slot == 1)
-            {
-                player1.text = choiceName;
-            }
-            if (me.slot == 2)
-            {
-                player2.text = choiceName;
-            }
-            if (me.slot == 3)
-            {
-                player3.text = choiceName;
-            }
-            if (me.slot == 4)
-            {
-                player4.text = choiceName;
-            }
 
         }
         else
@@ -201,7 +233,10 @@ public class Hero_Choice : NetworkBehaviour
 
     void OnSeverSceneChanged()
     {
-        lobby.SetActive(false);
+
     }
+
+
+
 
 }

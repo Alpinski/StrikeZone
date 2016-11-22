@@ -441,6 +441,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011850603374}
   - 137: {fileID: 137000013443191634}
+  - 65: {fileID: 65000014047027492}
+  - 114: {fileID: 114000012197838584}
   m_Layer: 0
   m_Name: Object01
   m_TagString: Untagged
@@ -1214,6 +1216,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.26, y: 7.64, z: 1}
   m_Center: {x: 0, y: 3.82, z: 0}
+--- !u!65 &65000014047027492
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013041853326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.67054, y: 5.676492, z: 1.4201429}
+  m_Center: {x: -0.0000029769726, y: -1.940644, z: 0.12551159}
 --- !u!95 &95000011105446088
 Animator:
   serializedVersion: 3
@@ -1274,6 +1288,18 @@ MonoBehaviour:
   EAbilityTarget: {fileID: 0}
   sword: {fileID: 1000013041853326}
   dir: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114000012197838584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013041853326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced3c414b3024804f8a597f0be42fb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0
 --- !u!114 &114000012285739232
 MonoBehaviour:
   m_ObjectHideFlags: 1
