@@ -86,9 +86,11 @@ public class AxeAbilities : NetworkBehaviour
                 sword.GetComponent<SwordDamage>().Damage = 750;
             }
 
-          //  QAbility();
-
-            //EAbility();
+            if (Input.GetButtonDown("Q"))
+            {
+                anim.SetTrigger("JumpAtt");
+                sword.GetComponent<SwordDamage>().Damage = 750;
+            }
 
         }
 
