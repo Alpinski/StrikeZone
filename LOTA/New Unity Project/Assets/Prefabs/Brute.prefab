@@ -194,6 +194,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011584266174}
   - 137: {fileID: 137000010132722736}
+  - 114: {fileID: 114000013323502208}
+  - 65: {fileID: 65000013208897662}
   m_Layer: 0
   m_Name: BattleAxe_GEO
   m_TagString: Untagged
@@ -1249,7 +1251,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010263452070}
   m_LocalRotation: {x: -0, y: -0.9964173, z: -0, w: -0.08457311}
-  m_LocalPosition: {x: -29.304901, y: 10.78557, z: 5.7556458}
+  m_LocalPosition: {x: -7.572357, y: 10.78557, z: -5.9736023}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_LocalEulerAnglesHint: {x: 0, y: -189.454, z: 0}
   m_Children:
@@ -2330,8 +2332,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.79712546, y: 1.4556054, z: 1}
-  m_Center: {x: 0.006477573, y: 1.2555958, z: 0.00001280643}
+  m_Size: {x: 0.79712546, y: 1.9828619, z: 1}
+  m_Center: {x: 0.006479287, y: 0.991968, z: 0.0000064179303}
+--- !u!65 &65000013208897662
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010654186428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25400046, y: 1.5658807, z: 0.54865867}
+  m_Center: {x: -0.32881078, y: 0.2801144, z: 0.09560183}
 --- !u!95 &95000011115408454
 Animator:
   serializedVersion: 3
@@ -2400,6 +2414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b48357a723e88d428e6c2dd5a050f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smoothTime: 50
+  Brute: {fileID: 1000010263452070}
+  EAbilityTarget: {fileID: 0}
+  sword: {fileID: 1000010654186428}
+  dir: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114000013298946762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2414,6 +2433,18 @@ MonoBehaviour:
   HP: 2000
   CurrentHp: 0
   Stuned: 0
+--- !u!114 &114000013323502208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010654186428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced3c414b3024804f8a597f0be42fb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0
 --- !u!114 &114000013489929206
 MonoBehaviour:
   m_ObjectHideFlags: 1

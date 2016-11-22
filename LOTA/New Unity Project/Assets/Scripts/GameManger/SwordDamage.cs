@@ -10,6 +10,7 @@ public class SwordDamage : MonoBehaviour {
         if(collision.gameObject.tag == "Player" && collision.gameObject != transform.parent.gameObject)
         {
             collision.gameObject.GetComponent<Health>().TakeDamage(Damage);
+            Damage = 0;
         }
     }
 }

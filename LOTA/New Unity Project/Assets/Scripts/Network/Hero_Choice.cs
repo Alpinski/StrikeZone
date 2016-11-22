@@ -11,6 +11,7 @@ public class Hero_Choice : NetworkBehaviour
     public GameObject dragonPrefab;
     public GameObject SkeletonPrefab;
     public GameObject samuraiPrefab;
+    public GameObject AxePrefab;
     private string userName;
     public GameObject CharacterChoice;
 
@@ -210,8 +211,32 @@ public class Hero_Choice : NetworkBehaviour
         {
             player4.text = choiceName;
         }
-    }
 
+    }
+    public void Brute()
+    {
+        CharacterChoice = AxePrefab;
+        SetPlayerChoice(CharacterChoice);
+        choiceName = CharacterChoice.name;
+
+
+        if (me.slot == 1)
+        {
+            player1.text = choiceName;
+        }
+        if (me.slot == 2)
+        {
+            player2.text = choiceName;
+        }
+        if (me.slot == 3)
+        {
+            player3.text = choiceName;
+        }
+        if (me.slot == 4)
+        {
+            player4.text = choiceName;
+        }
+    }
 
     public void ready (bool x)
     {
