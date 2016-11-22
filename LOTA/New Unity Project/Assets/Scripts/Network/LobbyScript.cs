@@ -18,24 +18,34 @@ public class LobbyScript : NetworkBehaviour
 
     private float loadTimer = 2;
 
-    private int prevPlayerCount;
+    private int prevPlayerCount = 0;
 
     NetworkLobbyManager lobbyMan;
 
     void Start()
     {
         lobbyMan = FindObjectOfType<NetworkLobbyManager>();
-        prevPlayerCount = lobbyMan.lobbySlots.Length;
     }
 
-    void OnEnable()
+    int OccupiedSlots()
     {
+        int count = 0;
+        foreach(var ls in lobbyMan.lobbySlots)
+        {
+            if(ls != null)
+            {
+                ++count;
+            }
+        }
+        return count;
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
 
         temp = true;
-
     }
-
-
 
 
     [Command]
@@ -45,31 +55,34 @@ public class LobbyScript : NetworkBehaviour
         {
             var ls = lobbyMan.lobbySlots[i];
             var info = GameSettings.Instance.GetPlayerInfo(ls.connectionToClient.connectionId);
+            RpcPlaceUsername(i, info.userName);
+            Debug.Log("Updating UI for user " + info.userName);
         }
 
-
+      
 
 
     }
 
     [ClientRpc]
-    void RpcPlaceUsername(int id, string info)
+    void RpcPlaceUsername(int id, string username)
     {
-        if (id == 1)
+        Debug.Log("Updating UI for user " + id.ToString() + username);
+        if (id == 0)
         {
-            GameObject.Find("Player1").GetComponent<Text>().text = info;
+            transform.GetChild(0).FindChild("Player1").GetComponent<Text>().text = username;
+        }
+        else if (id == 1)
+        {
+            transform.GetChild(0).FindChild("Player2").GetComponent<Text>().text = username;
         }
         else if (id == 2)
         {
-            GameObject.Find("Player2").GetComponent<Text>().text = info;
+            transform.GetChild(0).FindChild("Player3").GetComponent<Text>().text = username;
         }
         else if (id == 3)
         {
-            GameObject.Find("Player3").GetComponent<Text>().text = info;
-        }
-        else if (id == 4)
-        {
-            GameObject.Find("Player4").GetComponent<Text>().text = info;
+            transform.GetChild(0).FindChild("Player4").GetComponent<Text>().text = username;
         }
 
 
@@ -79,24 +92,20 @@ public class LobbyScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (prevPlayerCount != lobbyMan.lobbySlots.Length)
+        if (temp && isClient)
         {
-            prevPlayerCount = lobbyMan.lobbySlots.Length;
+            int filledSlotCount = OccupiedSlots();
+            if (prevPlayerCount != filledSlotCount)
+            {
+                prevPlayerCount = filledSlotCount;
+                CmdGetAllUserNames();
+            }
         }
     }
 
 
 
 
-    void OnLobbyClientConnect()
-    {
-        CmdGetAllUserNames();
-    }
-
-    void OnLobbyClientDisconnect()
-    {
-        CmdGetAllUserNames();
-    }
 
 
 }
