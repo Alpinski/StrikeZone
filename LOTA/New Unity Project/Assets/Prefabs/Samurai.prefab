@@ -2841,6 +2841,7 @@ MonoBehaviour:
   isUlt: 0
   ultTime: 5
   trail: {fileID: 1000013404594974}
+  particles: {fileID: 198000010939214890}
 --- !u!114 &114000013611510682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3099,7 +3100,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010414576834}
   serializedVersion: 2
-  lengthInSec: 0.25
+  lengthInSec: 0.1
   startDelay:
     scalar: 0
     maxCurve:
@@ -3146,7 +3147,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.1
+      scalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
