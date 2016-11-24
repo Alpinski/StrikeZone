@@ -24,6 +24,7 @@ public class SamAbilities : NetworkBehaviour {
     private SamMove sammove;
 
     public GameObject trail;
+    public ParticleSystem particles;
 
     private GameObject[] otherPlayers;
     private GameObject nearPlayer;
@@ -64,9 +65,15 @@ public class SamAbilities : NetworkBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Spin();
+        if (isUlt == false)
+        {
+            Spin();
+        }
 
-        Ult();
+        if (isSpin == false)
+        {
+            Ult();
+        }
 
         if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false)
         {
@@ -111,6 +118,8 @@ public class SamAbilities : NetworkBehaviour {
         {
             isUlt = true;
 
+            particles.Play();
+
             otherPlayers = GameObject.FindGameObjectsWithTag("Player");
 
             GameObject min = null;
@@ -136,9 +145,14 @@ public class SamAbilities : NetworkBehaviour {
 
         if (isUlt == true)
         {
+            anim.SetBool("isMoving", false);
+            anim.SetBool("isUlt", true);
+
             transform.position = new Vector3 (nearPlayer.transform.position.x + xRand, 
                                                 nearPlayer.transform.position.y,
                                                 nearPlayer.transform.position.z + zRand);
+
+            transform.LookAt(nearPlayer.transform);
 
             if (isTele == true)
             {
@@ -146,6 +160,8 @@ public class SamAbilities : NetworkBehaviour {
                 zRand = RandRand(Random.Range(-4f, -2f), Random.Range(2f, 4f));
 
                 isTele = false;
+
+                particles.Play();
             }
 
             if (teleTime >= 0.25f)
@@ -168,6 +184,8 @@ public class SamAbilities : NetworkBehaviour {
             isUlt = false;
 
             ultTime = timeUlt;
+
+            anim.SetBool("isUlt", false);
         }
     }
 
