@@ -51,7 +51,7 @@ public class SamMove : NetworkBehaviour {
         Plane mouseplane = new Plane(transform.up, transform.position);
 
         float distance;
-        if (mouseplane.Raycast(ray, out distance) && samabilities.isSpin == false)
+        if (mouseplane.Raycast(ray, out distance) && samabilities.isSpin == false && samabilities.isUlt == false)
         {
             Vector3 point = ray.GetPoint(distance);
             transform.LookAt(point);
