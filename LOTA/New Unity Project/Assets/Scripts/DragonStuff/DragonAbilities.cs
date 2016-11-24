@@ -4,8 +4,11 @@ using UnityEngine.Networking;
 
 public class DragonAbilities : NetworkBehaviour
 {
-    private float timeStamp;
-    private float coolDownPeriodofInSeconds;
+    private float M1;
+    private float M2;
+    private float Q;
+    private float E;
+    private float LS;
 
     private Animator anim;
 
@@ -42,13 +45,7 @@ public class DragonAbilities : NetworkBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-
-        timeStamp = coolDownPeriodofInSeconds;
-
-
-
     }
-
 
     void Update()
     {
@@ -63,7 +60,11 @@ public class DragonAbilities : NetworkBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane mouseplane = new Plane(transform.up, transform.position);
 
-            timeStamp -= Time.deltaTime;
+            M1 -= Time.deltaTime;
+            M2 -= Time.deltaTime;
+            Q -= Time.deltaTime;
+            E -= Time.deltaTime;
+            LS -= Time.deltaTime;
 
 
             if (mouseplane.Raycast(ray, out distance))
@@ -72,50 +73,35 @@ public class DragonAbilities : NetworkBehaviour
 
             }
 
-
-            if (Input.GetKeyDown("return"))
+            if (Input.GetButtonDown("Fire1") && M1 <= 0)
             {
-                timeStamp = 0;
-            }
-
-            if (Input.GetButtonDown("Fire1") && timeStamp <= 0)
-            {
-
-                timeStamp = coolDownPeriodofInSeconds;
+                M1 = 0.5f;
                 CmdSpawnM1FireBlot(dir);
-
             }
 
-            if (Input.GetButtonDown("Fire2") && timeStamp <= 0)
+            if (Input.GetButtonDown("Fire2") && M2 <= 0)
             {
-
-                timeStamp = coolDownPeriodofInSeconds;
+                M2 = 3;
                 CmdSpawnM2FireBall(dir);
             }
 
-            if (Input.GetButtonDown("Q") && timeStamp <= 0)
+            if (Input.GetButtonDown("Q") && Q <= 0)
             {
-                timeStamp = coolDownPeriodofInSeconds;
+                Q = 7;
                 CmdSpawnQFlameThrower(dir);
             }
 
-            if (Input.GetButtonDown("E") && timeStamp <= 0)
+            if (Input.GetButtonDown("E") && E <= 0)
             {
-                timeStamp = coolDownPeriodofInSeconds;
+                E = 10;
                 CmdSpawnEFlameStrike(point);
             }
 
-            if (Input.GetButtonDown("LeftShift") && timeStamp <= 0)
+            if (Input.GetButtonDown("LeftShift") && LS <= 0)
             {
-                timeStamp = coolDownPeriodofInSeconds;
+                LS = 60;
                 CmdSpawnLShiftMeteorStrike(point);
 
-            }
-
-            if (Input.GetButtonDown("Space") && timeStamp <= 0)
-            {
-                timeStamp = coolDownPeriodofInSeconds;
-                anim.SetTrigger("IsJumping");
             }
         }
     }
@@ -157,6 +143,7 @@ public class DragonAbilities : NetworkBehaviour
         var ohBehave = X.GetComponentInChildren<RotationCorrector>();
         ohBehave.dir = rot;
         NetworkServer.Spawn(X);
+        
     }
 
     [Command]

@@ -9,6 +9,14 @@ public class AxeAbilities : NetworkBehaviour
     private Animator anim;
     public float smoothTime = 50f;
     public GameObject Brute;
+    private float Buffed;
+    private float buffTime;
+    private bool IsBuffed = false;
+    private float M1;
+    private float M2;
+    private float Q;
+    private float E;
+    private float LS;
 
     [HideInInspector]
     public GameObject EAbilityTarget;
@@ -54,8 +62,27 @@ public class AxeAbilities : NetworkBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane mouseplane = new Plane(transform.up, transform.position);
 
-        timeStamp -= Time.deltaTime;
+        M1 -= Time.deltaTime;
+        M2 -= Time.deltaTime;
+        Q -= Time.deltaTime;
+        E -= Time.deltaTime;
+        LS -= Time.deltaTime;
 
+        buffTime -= Time.deltaTime;
+        Debug.Log(buffTime);
+        if (IsBuffed == true)
+        {
+            Buffed = 250;
+            Debug.Log("Buffed");
+            gameObject.GetComponent<AxeMovement>().speed = 80;
+        }
+        if (buffTime < 0)
+        {
+            Buffed = 0;
+            IsBuffed = false;
+            gameObject.GetComponent<AxeMovement>().speed = 50;
+            Debug.Log("done");
+        }
 
         if (mouseplane.Raycast(ray, out distance))
         {
@@ -74,22 +101,67 @@ public class AxeAbilities : NetworkBehaviour
         {
 
 
-            if (Input.GetButtonDown("Fire1") && timeStamp <= 0)
+            if (Input.GetButtonDown("Fire1") && timeStamp <= 5)
             {
                 anim.SetTrigger("LeftClick");
-                sword.GetComponent<SwordDamage>().Damage = 500;
+                sword.GetComponent<SwordDamage>().takedamage = true;
+                sword.GetComponent<SwordDamage>().Damage = 300 + Buffed;
             }
 
             if (Input.GetButtonDown("Fire2"))
             {
                 anim.SetTrigger("RightClick");
-                sword.GetComponent<SwordDamage>().Damage = 750;
+                sword.GetComponent<SwordDamage>().takedamage = true;
+                sword.GetComponent<SwordDamage>().Damage = 500 + Buffed;
             }
 
             if (Input.GetButtonDown("Q"))
             {
-                anim.SetTrigger("JumpAtt");
-                sword.GetComponent<SwordDamage>().Damage = 750;
+                
+
+                EAbilityCD -= Time.deltaTime;
+                EButtonDown = true;
+
+                if (EAbilityCD <= 0)
+                {
+                    if (EButtonDown == true)
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            RaycastHit hitInfo = new RaycastHit();
+                            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
+
+                            if (hit == true)
+                            {
+                                Debug.Log(hit);
+                                if (hitInfo.transform.gameObject.tag == "Player" && hitInfo.transform.gameObject != gameObject)
+                                {
+                                    EAbilityCD = 10;
+                                    EButtonDown = false;
+                                    hitInfo.transform.gameObject.GetComponent<Health>().Stuned = 2;
+                                    // fix This Fgt pLS
+                                    anim.SetTrigger("Kick");
+                                    sword.GetComponent<SwordDamage>().takedamage = true;
+                                    sword.GetComponent<SwordDamage>().Damage = 300 + Buffed;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (Input.GetButtonDown("E"))
+            {
+                anim.SetTrigger("Taunt");
+                IsBuffed = true;
+                buffTime = 3;
+            }
+
+            if (Input.GetButtonDown("LeftShift"))
+            {
+                anim.SetTrigger("Combo");
+                sword.GetComponent<SwordDamage>().takedamage = true;
+                sword.GetComponent<SwordDamage>().Damage = 750 + Buffed;
             }
 
         }

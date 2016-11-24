@@ -5568,7 +5568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401fa1120b86c07438643136befdbd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 2000
+  HP: 10000
   CurrentHp: -5000
   Stuned: 0
 --- !u!114 &114000014076477482

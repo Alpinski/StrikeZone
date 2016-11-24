@@ -43,7 +43,7 @@ public class AxeMovement : NetworkBehaviour {
             transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
         }
 
-        cam.transform.position = transform.position + new Vector3(0, 70, -5);
+        cam.transform.position = transform.position + new Vector3(0, 110, -5);
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane mouseplane = new Plane(transform.up, transform.position);
