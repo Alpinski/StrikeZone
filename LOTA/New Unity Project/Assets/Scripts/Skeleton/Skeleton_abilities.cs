@@ -200,7 +200,7 @@ public class Skeleton_abilities : NetworkBehaviour
     {
         if (col.gameObject != gameObject && col.gameObject.tag != "Terrain")
         {
-            Debug.Log(col.gameObject);
+
             colliderInfront = true;
         }
     }

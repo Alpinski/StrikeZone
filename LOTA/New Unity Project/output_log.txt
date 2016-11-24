@@ -1,2 +1,2 @@
-There should be 'Game_Data'
+There should be 'game_Data'
 folder next to the executable

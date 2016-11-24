@@ -58,7 +58,7 @@ public class Hero_Choice : NetworkBehaviour
         CmdPushUsernameToServer(userName);
 
         PlayerJoinInit();
-        gameObject.GetComponent<LobbyScript>().playerIsOnSever = true;
+       
             
     }
 
@@ -99,6 +99,14 @@ public class Hero_Choice : NetworkBehaviour
     void CmdPushUsernameToServer(string x)
     {
         GameSettings.Instance.AddPlayerName(connectionToClient.connectionId, x);
+        RpcUsernameisOnServer();
+    }
+
+    [ClientRpc]
+    void RpcUsernameisOnServer()
+    {
+        Debug.LogWarning("This player is on server now");
+        gameObject.GetComponent<LobbyScript>().playerIsOnServer = true;
     }
 
     [Command]
