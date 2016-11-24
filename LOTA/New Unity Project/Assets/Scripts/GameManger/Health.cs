@@ -34,7 +34,11 @@ public class Health : NetworkBehaviour
         {
 
             Dead();
-            CmdCheckIsDead();
+            if (isClient)
+            {
+                CmdCheckIsDead();
+            }
+        
         }
     }
 

@@ -14,7 +14,6 @@ public class LobbyScript : NetworkBehaviour
     [SyncVar]
     private int NumberofPlayers;
 
-    public bool temp = false;
 
     private float startDelay = 2;
 
@@ -23,7 +22,7 @@ public class LobbyScript : NetworkBehaviour
     NetworkLobbyManager lobbyMan;
 
     [HideInInspector]
-    public bool playerIsOnSever = false;
+    public bool playerIsOnServer = false;
 
     void Start()
     {
@@ -48,43 +47,41 @@ public class LobbyScript : NetworkBehaviour
         base.OnStartLocalPlayer();
 
         startDelay = 2;
-        temp = true;
  
     }
 
 
     [Command]
-    void CmdGetAllUserNames()
+    void CmdBroadcastAllUserNames()
     {
-        Debug.Log(OccupiedSlots());
-        for (int i = 0; i < OccupiedSlots(); ++i)
+        var allLobbyPlayers = FindObjectsOfType<LobbyScript>();
+        foreach (var player in allLobbyPlayers)
         {
-            //**********************************
-            Debug.Log("i = " + i);
-            var ls = lobbyMan.lobbySlots[i];
-            Debug.Log("ls = " + ls);
-            var info = GameSettings.Instance.GetPlayerInfo(ls.connectionToClient.connectionId);
-            Debug.Log(GameSettings.Instance.GetPlayerInfo(0).userName);
-            if (info != null && ls != null)
+            for (int i = 0; i < OccupiedSlots(); ++i)
             {
-                RpcPlaceUsername(i, info.userName);
-                Debug.Log("id " + i + " has placed username " + info.userName);
-            }
-            else if (info == null || ls == null)
-            {
-                Debug.Log("cant update ui, null");
+                //**********************************
+                var ls = lobbyMan.lobbySlots[i];
+                var info = GameSettings.Instance.GetPlayerInfo(ls.connectionToClient.connectionId);
+                if (info != null && ls != null)
+                {
+                    player.RpcPlaceUsername(i, info.userName);
+                }
+                else if (info == null || ls == null)
+                {
+                    continue;
+                }
             }
         }
-
-      
-
-
     }
 
     [ClientRpc]
     void RpcPlaceUsername(int id, string username)
     {
-        Debug.Log("Updating UI for user " + id.ToString() + username);
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         if (id == 0)
         {
             transform.GetChild(0).FindChild("Player1").GetComponent<Text>().text = username;
@@ -110,7 +107,7 @@ public class LobbyScript : NetworkBehaviour
     void Update()
     {
         startDelay -= Time.deltaTime;
-        if (temp && isClient && playerIsOnSever) 
+        if (isClient && playerIsOnServer) 
         {
 
             int filledSlotCount = OccupiedSlots();
@@ -118,8 +115,8 @@ public class LobbyScript : NetworkBehaviour
             {
                 Debug.Log(" someone has joined");
                 prevPlayerCount = filledSlotCount;
-                CmdGetAllUserNames();
-                playerIsOnSever = false;
+                CmdBroadcastAllUserNames();
+                playerIsOnServer = false;
             }
         }
     }
