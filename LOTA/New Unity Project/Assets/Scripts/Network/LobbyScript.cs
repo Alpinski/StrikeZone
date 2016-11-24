@@ -16,11 +16,14 @@ public class LobbyScript : NetworkBehaviour
 
     public bool temp = false;
 
-    private float loadTimer = 2;
+    private float startDelay = 2;
 
     private int prevPlayerCount = 0;
 
     NetworkLobbyManager lobbyMan;
+
+    [HideInInspector]
+    public bool playerIsOnSever = false;
 
     void Start()
     {
@@ -44,19 +47,33 @@ public class LobbyScript : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
 
+        startDelay = 2;
         temp = true;
+ 
     }
 
 
     [Command]
     void CmdGetAllUserNames()
     {
-        for (int i = 0; i < lobbyMan.lobbySlots.Length; ++i)
+        Debug.Log(OccupiedSlots());
+        for (int i = 0; i < OccupiedSlots(); ++i)
         {
+            //**********************************
+            Debug.Log("i = " + i);
             var ls = lobbyMan.lobbySlots[i];
+            Debug.Log("ls = " + ls);
             var info = GameSettings.Instance.GetPlayerInfo(ls.connectionToClient.connectionId);
-            RpcPlaceUsername(i, info.userName);
-            Debug.Log("Updating UI for user " + info.userName);
+            Debug.Log(GameSettings.Instance.GetPlayerInfo(0).userName);
+            if (info != null && ls != null)
+            {
+                RpcPlaceUsername(i, info.userName);
+                Debug.Log("id " + i + " has placed username " + info.userName);
+            }
+            else if (info == null || ls == null)
+            {
+                Debug.Log("cant update ui, null");
+            }
         }
 
       
@@ -92,13 +109,17 @@ public class LobbyScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (temp && isClient)
+        startDelay -= Time.deltaTime;
+        if (temp && isClient && playerIsOnSever) 
         {
+
             int filledSlotCount = OccupiedSlots();
             if (prevPlayerCount != filledSlotCount)
             {
+                Debug.Log(" someone has joined");
                 prevPlayerCount = filledSlotCount;
                 CmdGetAllUserNames();
+                playerIsOnSever = false;
             }
         }
     }

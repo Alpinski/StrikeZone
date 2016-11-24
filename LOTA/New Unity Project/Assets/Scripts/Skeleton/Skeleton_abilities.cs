@@ -20,7 +20,7 @@ public class Skeleton_abilities : NetworkBehaviour
     private float QAblittyCD;
     private float EAbilityCD = 0;
     private bool EButtonDown = false;
-
+    private bool colliderInfront = false;
 
     public GameObject sword;
 
@@ -54,12 +54,14 @@ public class Skeleton_abilities : NetworkBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 anim.SetTrigger("IsAttacking");
+                sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 500;
             }
 
             if (Input.GetMouseButtonDown(1))
             {
                 anim.SetTrigger("RightClick");
+                sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 750;
             }
 
@@ -135,38 +137,32 @@ public class Skeleton_abilities : NetworkBehaviour
         {
             if (Input.GetButton("Q"))
             {
-                Debug.Log("mouse is ready");
-                mouseReady = true;
-            }
-        }
-        if (mouseReady == true)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("mouse is ready and clicked");
-                targetpos = transform.position + (transform.forward * 60) + (transform.up * 20);
-                
+
+                targetpos = transform.position + (transform.forward * 60);
+
                 QAbillityUseBool = true;
                 QAblittyCD = 0.4f;
-                mouseReady = false;
 
             }
-        }
 
+        }
 
 
         if (QAbillityUseBool == true)
         {
-            Debug.Log("moving player");
-            if (targetpos.x < 120 && targetpos.x > -180 && targetpos.z < 170 && targetpos.z > -100)
+            if (colliderInfront == false)
             {
                 transform.position = Vector3.SmoothDamp(transform.position, targetpos, ref velocity, smoothTime);
+            }
+            else
+            {
+                transform.position = transform.position + transform.forward *-2;  
             }
             QAblittyCD -= Time.deltaTime;
 
             if (QAblittyCD <= 0)
             {
-                Debug.Log("stoped moving the player");
+                anim.SetTrigger("IsAttacking");
                 QAbillityUseBool = false;
                 QAblittyUseTimer = 3.0f;
             }
@@ -200,5 +196,19 @@ public class Skeleton_abilities : NetworkBehaviour
         uiControl.SetPlayerName(name);
     }
 
-
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject != gameObject && col.gameObject.tag != "Terrain")
+        {
+            Debug.Log(col.gameObject);
+            colliderInfront = true;
+        }
+    }
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject != gameObject && col.gameObject.tag != "Terrain")
+        {
+            colliderInfront = false;
+        }
+    }
 }

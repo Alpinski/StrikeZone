@@ -58,6 +58,8 @@ public class Hero_Choice : NetworkBehaviour
         CmdPushUsernameToServer(userName);
 
         PlayerJoinInit();
+        gameObject.GetComponent<LobbyScript>().playerIsOnSever = true;
+            
     }
 
     void OnDestroy()

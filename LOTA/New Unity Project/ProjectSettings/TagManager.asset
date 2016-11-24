@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Dragon
-  - Skeleton
-  - Samurai
   - Lobby
+  - Terrain
   layers:
   - Default
   - TransparentFX
