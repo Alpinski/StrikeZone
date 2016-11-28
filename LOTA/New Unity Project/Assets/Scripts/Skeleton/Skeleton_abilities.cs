@@ -25,6 +25,7 @@ public class Skeleton_abilities : NetworkBehaviour
     private float LSAbilityUseTimer;
     private bool LSAbilityIsInUse = false;
 
+
     public GameObject sword;
 
     [SyncVar]
@@ -49,6 +50,7 @@ public class Skeleton_abilities : NetworkBehaviour
 
 	void Update ()
     {
+
         dir = transform.rotation;
         if (isLocalPlayer)
         {
@@ -61,7 +63,7 @@ public class Skeleton_abilities : NetworkBehaviour
                 sword.GetComponent<SwordDamage>().Damage = 500;
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && M2 <= 3)
             {
                 anim.SetTrigger("RightClick");
                 sword.GetComponent<SwordDamage>().takedamage = true;

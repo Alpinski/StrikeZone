@@ -90,35 +90,27 @@ public class AxeAbilities : NetworkBehaviour
 
         }
 
-
-        if (Input.GetKeyDown("return"))
-        {
-            timeStamp = 0;
-        }
-
         dir = transform.rotation;
         if (isLocalPlayer)
         {
 
 
-            if (Input.GetButtonDown("Fire1") && timeStamp <= 5)
+            if (Input.GetButtonDown("Fire1") && M1 <= 2)
             {
                 anim.SetTrigger("LeftClick");
                 sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 300 + Buffed;
             }
 
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2") && M2 <= 4)
             {
                 anim.SetTrigger("RightClick");
                 sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 500 + Buffed;
             }
 
-            if (Input.GetButtonDown("Q"))
+            if (Input.GetButtonDown("Q") && Q <= 7)
             {
-                
-
                 EAbilityCD -= Time.deltaTime;
                 EButtonDown = true;
 
@@ -150,21 +142,19 @@ public class AxeAbilities : NetworkBehaviour
                 }
             }
 
-            if (Input.GetButtonDown("E"))
+            if (Input.GetButtonDown("E") && E <= 12)
             {
                 anim.SetTrigger("Taunt");
                 IsBuffed = true;
-                buffTime = 3;
+                buffTime = 4;
             }
 
-            if (Input.GetButtonDown("LeftShift"))
+            if (Input.GetButtonDown("LeftShift") && LS <= 60)
             {
                 anim.SetTrigger("Combo");
                 sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 750 + Buffed;
             }
-
         }
-
     }
 }

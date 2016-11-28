@@ -32,6 +32,12 @@ public class SamAbilities : NetworkBehaviour {
     private float xRand;
     private float zRand;
 
+    private float M1;
+    private float M2;
+    private float Q;
+    private float E;
+    private float LS;
+
     PlayerUIController uiControl;
 
 
@@ -65,6 +71,12 @@ public class SamAbilities : NetworkBehaviour {
     // Update is called once per frame
     void Update()
     {
+        M1 -= Time.deltaTime;
+        M2 -= Time.deltaTime;
+        Q -= Time.deltaTime;
+        E -= Time.deltaTime;
+        LS -= Time.deltaTime;
+
         if (isUlt == false)
         {
             Spin();
@@ -75,7 +87,7 @@ public class SamAbilities : NetworkBehaviour {
             Ult();
         }
 
-        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false)
+        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 <= 1.5f)
         {
             anim.SetTrigger("isAttack");
         }
@@ -104,7 +116,7 @@ public class SamAbilities : NetworkBehaviour {
             spinTime = timeSpin;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && E <= 7)
         {
             isSpin = true;
             trail.SetActive(true);
@@ -114,7 +126,7 @@ public class SamAbilities : NetworkBehaviour {
 
     void Ult()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && LS <= 60)
         {
             isUlt = true;
 
