@@ -63,7 +63,7 @@ public class Skeleton_abilities : NetworkBehaviour
                 sword.GetComponent<SwordDamage>().Damage = 500;
             }
 
-            if (Input.GetMouseButtonDown(1) && M2 <= 3)
+            if (Input.GetMouseButtonDown(1))
             {
                 anim.SetTrigger("RightClick");
                 sword.GetComponent<SwordDamage>().takedamage = true;
