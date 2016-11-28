@@ -21,6 +21,9 @@ public class Skeleton_abilities : NetworkBehaviour
     private float EAbilityCD = 0;
     private bool EButtonDown = false;
     private bool colliderInfront = false;
+    private float LSAbilityTimer;
+    private float LSAbilityUseTimer;
+    private bool LSAbilityIsInUse = false;
 
     public GameObject sword;
 
@@ -69,9 +72,33 @@ public class Skeleton_abilities : NetworkBehaviour
 
             EAbility();
 
+            LSAbility();
         }
     
     }
+
+
+    private void LSAbility()
+    {
+        LSAbilityTimer -= Time.deltaTime;
+        LSAbilityUseTimer -= Time.deltaTime;
+        if (LSAbilityTimer < 0)
+        {
+            if (Input.GetButton("LeftShift"))
+            {
+                transform.FindChild("DeathCloud").gameObject.SetActive(true);
+                LSAbilityUseTimer = 15;
+                LSAbilityIsInUse = true;
+            }
+        }
+        if(LSAbilityUseTimer < 0 && LSAbilityIsInUse == true)
+        {
+            LSAbilityIsInUse = false;
+            transform.FindChild("DeathCloud").gameObject.SetActive(false);
+            LSAbilityTimer = 20;
+        }
+    }
+
 
 
     private void EAbility()
