@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RangedDMG : MonoBehaviour
 {
+    //Dragons damage code
     public float Damage = 500;
 
     void OnCollisionEnter(Collision col)

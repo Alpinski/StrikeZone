@@ -410,7 +410,7 @@ MonoBehaviour:
   ProjectileExplosionRadius: 3
   ProjectileExplosionForce: 0
   ProjectileColliderDelay: 0
-  ProjectileColliderSpeed: 25
+  ProjectileColliderSpeed: 50
   ProjectileDirection: {x: 0, y: 0, z: 1}
   ProjectileCollisionLayers:
     serializedVersion: 2
@@ -519,7 +519,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 25
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3947,7 +3947,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedWireframeHidden: 1
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

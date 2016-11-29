@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ParticalDMG : MonoBehaviour
 {
+    //Special Code for dragon flamethrower damag, deals damage through particles
     ParticleSystem ps;
     List<ParticleCollisionEvent> collisions = new List<ParticleCollisionEvent>();
     public float damage = 10;
