@@ -64,13 +64,15 @@ public class SamAbilities : NetworkBehaviour {
 
         sammove = gameObject.GetComponent<SamMove>();
 
+        //Setting original variables
         timeSpin = spinTime;
         timeUlt = ultTime;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //Cooldowns
         M1 -= Time.deltaTime;
         M2 -= Time.deltaTime;
         Q -= Time.deltaTime;
@@ -86,7 +88,8 @@ public class SamAbilities : NetworkBehaviour {
         {
             Ult();
         }
-
+        
+        //Attacking
         if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 <= 1.5f)
         {
             anim.SetTrigger("isAttack");
@@ -97,9 +100,11 @@ public class SamAbilities : NetworkBehaviour {
     {
         if (isSpin == true)
         {
+            //Physically spinning
             transform.Rotate(0f, -20f, 0f);
             spinTime = spinTime - Time.deltaTime;
 
+            //Gradually increasing speed
             if (sammove.speed <= 45f)
             {
                 sammove.speed = sammove.speed + 0.1f;
@@ -108,6 +113,7 @@ public class SamAbilities : NetworkBehaviour {
             anim.SetBool("isMoving", false);
         }
 
+        //Checking if the timer hasn't stopped yet
         if (spinTime <= 0)
         {
             isSpin = false;
@@ -116,6 +122,7 @@ public class SamAbilities : NetworkBehaviour {
             spinTime = timeSpin;
         }
 
+        //Instantaneous actions
         if (Input.GetKeyDown(KeyCode.E) && E <= 7)
         {
             isSpin = true;
