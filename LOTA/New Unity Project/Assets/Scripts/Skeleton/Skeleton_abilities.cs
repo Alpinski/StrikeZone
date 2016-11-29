@@ -171,7 +171,7 @@ public class Skeleton_abilities : NetworkBehaviour
             if (Input.GetButton("Q"))
             {
 
-                targetpos = transform.position + (transform.forward * 60);
+                targetpos = transform.position + (transform.forward * 60) + (transform.up * 10);
 
                 QAbillityUseBool = true;
                 QAblittyCD = 0.4f;
