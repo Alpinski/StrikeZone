@@ -5536,7 +5536,7 @@ MonoBehaviour:
   FlameThrower: {fileID: 163286, guid: 383ddf4137fa8634a9265ec6c50d06d7, type: 2}
   MeteorUltimate: {fileID: 165786, guid: d7b50f004cdc74b409188d8b822292fc, type: 2}
   face: {fileID: 1000010354001416}
-  bulletSpeed: 10
+  bulletSpeed: 50
   dir: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114000012873775276
 MonoBehaviour:
