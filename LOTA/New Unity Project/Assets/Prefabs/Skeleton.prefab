@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTime: 0.3
-  skullStun: {fileID: -3192268, guid: a1026fc35c0f8b34a895c4f7045388dd, type: 2}
+  skullStun: {fileID: 1000010563853708, guid: a1026fc35c0f8b34a895c4f7045388dd, type: 2}
   EAbilityTarget: {fileID: 0}
   sword: {fileID: 1000013041853326}
   dir: {x: 0, y: 0, z: 0, w: 0}
