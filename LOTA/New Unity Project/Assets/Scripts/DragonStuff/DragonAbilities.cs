@@ -60,11 +60,11 @@ public class DragonAbilities : NetworkBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane mouseplane = new Plane(transform.up, transform.position);
 
-            M1 -= Time.deltaTime;
-            M2 -= Time.deltaTime;
-            Q -= Time.deltaTime;
-            E -= Time.deltaTime;
-            LS -= Time.deltaTime;
+            M1 += Time.deltaTime;
+            M2 += Time.deltaTime;
+            Q += Time.deltaTime;
+            E += Time.deltaTime;
+            LS += Time.deltaTime;
 
 
             if (mouseplane.Raycast(ray, out distance))
@@ -73,31 +73,31 @@ public class DragonAbilities : NetworkBehaviour
 
             }
 
-            if (Input.GetButtonDown("Fire1") && M1 <= 0)
+            if (Input.GetButtonDown("Fire1") && M1 >= 1)
             {
                 M1 = 0.5f;
                 CmdSpawnM1FireBlot(dir);
             }
 
-            if (Input.GetButtonDown("Fire2") && M2 <= 0)
+            if (Input.GetButtonDown("Fire2") && M2 >= 3)
             {
                 M2 = 3;
                 CmdSpawnM2FireBall(dir);
             }
 
-            if (Input.GetButtonDown("Q") && Q <= 0)
+            if (Input.GetButtonDown("Q") && Q >= 7)
             {
                 Q = 7;
                 CmdSpawnQFlameThrower(dir);
             }
 
-            if (Input.GetButtonDown("E") && E <= 0)
+            if (Input.GetButtonDown("E") && E >= 12)
             {
                 E = 10;
                 CmdSpawnEFlameStrike(point);
             }
 
-            if (Input.GetButtonDown("LeftShift") && LS <= 0)
+            if (Input.GetButtonDown("LeftShift") && LS >= 30)
             {
                 LS = 60;
                 CmdSpawnLShiftMeteorStrike(point);

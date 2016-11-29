@@ -71,11 +71,11 @@ public class SamAbilities : NetworkBehaviour {
     // Update is called once per frame
     void Update()
     {
-        M1 -= Time.deltaTime;
-        M2 -= Time.deltaTime;
-        Q -= Time.deltaTime;
-        E -= Time.deltaTime;
-        LS -= Time.deltaTime;
+        M1 += Time.deltaTime;
+        M2 += Time.deltaTime;
+        Q += Time.deltaTime;
+        E += Time.deltaTime;
+        LS += Time.deltaTime;
 
         if (isUlt == false)
         {
@@ -87,9 +87,10 @@ public class SamAbilities : NetworkBehaviour {
             Ult();
         }
 
-        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 <= 1.5f)
+        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 4)
         {
             anim.SetTrigger("isAttack");
+            M1 = 0;
         }
     }
 
@@ -116,18 +117,20 @@ public class SamAbilities : NetworkBehaviour {
             spinTime = timeSpin;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && E <= 7)
+        if (Input.GetKeyDown(KeyCode.E) && E >= 14)
         {
             isSpin = true;
             trail.SetActive(true);
             sammove.speed = 20f;
+            E = 0;
         }
     }
 
     void Ult()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && LS <= 60)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && LS >= 20)
         {
+            LS = 0;
             isUlt = true;
 
             particles.Play();
