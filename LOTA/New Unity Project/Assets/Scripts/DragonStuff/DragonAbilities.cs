@@ -56,10 +56,10 @@ public class DragonAbilities : NetworkBehaviour
         if (isLocalPlayer)
         {
 
-
+            //raycasting where the player faces
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane mouseplane = new Plane(transform.up, transform.position);
-
+            //Cooldowns for abilities
             M1 += Time.deltaTime;
             M2 += Time.deltaTime;
             Q += Time.deltaTime;
@@ -72,40 +72,40 @@ public class DragonAbilities : NetworkBehaviour
                 point = ray.GetPoint(distance);
 
             }
-
+            //spawns projectiles
             if (Input.GetButtonDown("Fire1") && M1 >= 1)
             {
-                M1 = 0.5f;
+                M1 = 0;
                 CmdSpawnM1FireBlot(dir);
             }
 
             if (Input.GetButtonDown("Fire2") && M2 >= 3)
             {
-                M2 = 3;
+                M2 = 0;
                 CmdSpawnM2FireBall(dir);
             }
 
             if (Input.GetButtonDown("Q") && Q >= 7)
             {
-                Q = 7;
+                Q = 0;
                 CmdSpawnQFlameThrower(dir);
             }
 
             if (Input.GetButtonDown("E") && E >= 12)
             {
-                E = 10;
+                E = 0;
                 CmdSpawnEFlameStrike(point);
             }
 
             if (Input.GetButtonDown("LeftShift") && LS >= 30)
             {
-                LS = 60;
+                LS = 0;
                 CmdSpawnLShiftMeteorStrike(point);
 
             }
         }
     }
-
+    //networking
     void LateUpdate()
     {
         uiControl.UpdatePosition(transform.position);
@@ -135,7 +135,7 @@ public class DragonAbilities : NetworkBehaviour
     {
         uiControl.SetPlayerName(name);
     }
-
+    //spawns abilities over the network
     [Command]
     void CmdSpawnM1FireBlot(Quaternion rot)
     {

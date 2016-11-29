@@ -47,8 +47,9 @@ public class Skeleton_movement : NetworkBehaviour
             transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
         }
 
-
-        cam.transform.position = transform.position + new Vector3(0, 50, -7);
+        // sets cam postion
+        cam.transform.position = transform.position + new Vector3(0, 110, -5);
+        //raycasting player rotation
 
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

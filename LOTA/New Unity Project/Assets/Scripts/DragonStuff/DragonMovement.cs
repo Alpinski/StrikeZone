@@ -23,6 +23,7 @@ public class DragonMovement : NetworkBehaviour
 	
 	void Update ()
     {
+        // on button press changes characters vertical and horizontal position and plays animation
         float H = Input.GetAxis("Horizontal");
         float V = Input.GetAxis("Vertical");
 
@@ -34,15 +35,17 @@ public class DragonMovement : NetworkBehaviour
         {
             anim.SetBool("IsMoving", false);
         }
-
+        //refers to stun
         if (gameObject.GetComponent<Health>().Stuned <= 0)
         {
             transform.position = transform.position + Vector3.right * H * speed * Time.deltaTime;
             transform.position = transform.position + Vector3.forward * V * speed * Time.deltaTime;
         }
 
-        cam.transform.position = transform.position + new Vector3(0, 70, -5);
-        
+        // sets cam postion
+        cam.transform.position = transform.position + new Vector3(0, 110, -5);
+        //raycasting player rotation
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane mouseplane = new Plane(transform.up, transform.position);
 
