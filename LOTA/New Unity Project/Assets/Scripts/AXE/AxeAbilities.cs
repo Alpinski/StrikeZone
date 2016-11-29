@@ -67,7 +67,7 @@ public class AxeAbilities : NetworkBehaviour
         Q += Time.deltaTime;
         E += Time.deltaTime;
         LS += Time.deltaTime;
-
+        //buff type ability which gives a burst of power to character
         buffTime -= Time.deltaTime;
         Debug.Log(buffTime);
         if (IsBuffed == true)
@@ -94,7 +94,7 @@ public class AxeAbilities : NetworkBehaviour
         if (isLocalPlayer)
         {
 
-
+            //on button press plays animations and deals damage
             if (Input.GetButtonDown("Fire1") && M1 >= 6)
             {
                 anim.SetTrigger("LeftClick");
@@ -110,11 +110,11 @@ public class AxeAbilities : NetworkBehaviour
                 sword.GetComponent<SwordDamage>().Damage = 500 + Buffed;
                 M2 = 0;
             }
-
+            // meant to have a stun not ready yet
             if (Input.GetButtonDown("Q") && Q >= 8)
             {
                 /*
-                                    // fix This Fgt pLS
+                                    // fix This  pLS
                                     anim.SetTrigger("Kick");
                                     sword.GetComponent<SwordDamage>().takedamage = true;
                                     sword.GetComponent<SwordDamage>().Damage = 300 + Buffed;
