@@ -64,20 +64,18 @@ public class SamAbilities : NetworkBehaviour {
 
         sammove = gameObject.GetComponent<SamMove>();
 
-        //Setting original variables
         timeSpin = spinTime;
         timeUlt = ultTime;
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        //Cooldowns
-        M1 -= Time.deltaTime;
-        M2 -= Time.deltaTime;
-        Q -= Time.deltaTime;
-        E -= Time.deltaTime;
-        LS -= Time.deltaTime;
+    {
+        M1 += Time.deltaTime;
+        M2 += Time.deltaTime;
+        Q += Time.deltaTime;
+        E += Time.deltaTime;
+        LS += Time.deltaTime;
 
         if (isUlt == false)
         {
@@ -88,11 +86,11 @@ public class SamAbilities : NetworkBehaviour {
         {
             Ult();
         }
-        
-        //Attacking
-        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 <= 1.5f)
+
+        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 4)
         {
             anim.SetTrigger("isAttack");
+            M1 = 0;
         }
     }
 
@@ -100,11 +98,9 @@ public class SamAbilities : NetworkBehaviour {
     {
         if (isSpin == true)
         {
-            //Physically spinning
             transform.Rotate(0f, -20f, 0f);
             spinTime = spinTime - Time.deltaTime;
 
-            //Gradually increasing speed
             if (sammove.speed <= 45f)
             {
                 sammove.speed = sammove.speed + 0.1f;
@@ -113,7 +109,6 @@ public class SamAbilities : NetworkBehaviour {
             anim.SetBool("isMoving", false);
         }
 
-        //Checking if the timer hasn't stopped yet
         if (spinTime <= 0)
         {
             isSpin = false;
@@ -122,19 +117,20 @@ public class SamAbilities : NetworkBehaviour {
             spinTime = timeSpin;
         }
 
-        //Instantaneous actions
-        if (Input.GetKeyDown(KeyCode.E) && E <= 7)
+        if (Input.GetKeyDown(KeyCode.E) && E >= 14)
         {
             isSpin = true;
             trail.SetActive(true);
             sammove.speed = 20f;
+            E = 0;
         }
     }
 
     void Ult()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && LS <= 60)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && LS >= 20)
         {
+            LS = 0;
             isUlt = true;
 
             particles.Play();

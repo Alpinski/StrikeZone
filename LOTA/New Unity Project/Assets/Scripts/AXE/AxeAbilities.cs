@@ -62,11 +62,11 @@ public class AxeAbilities : NetworkBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane mouseplane = new Plane(transform.up, transform.position);
 
-        M1 -= Time.deltaTime;
-        M2 -= Time.deltaTime;
-        Q -= Time.deltaTime;
-        E -= Time.deltaTime;
-        LS -= Time.deltaTime;
+        M1 += Time.deltaTime;
+        M2 += Time.deltaTime;
+        Q += Time.deltaTime;
+        E += Time.deltaTime;
+        LS += Time.deltaTime;
 
         buffTime -= Time.deltaTime;
         Debug.Log(buffTime);
@@ -95,21 +95,23 @@ public class AxeAbilities : NetworkBehaviour
         {
 
 
-            if (Input.GetButtonDown("Fire1") && M1 <= 2)
+            if (Input.GetButtonDown("Fire1") && M1 >= 6)
             {
                 anim.SetTrigger("LeftClick");
                 sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 300 + Buffed;
+                M1 = 0;
             }
 
-            if (Input.GetButtonDown("Fire2") && M2 <= 4)
+            if (Input.GetButtonDown("Fire2") && M2 >= 8)
             {
                 anim.SetTrigger("RightClick");
                 sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 500 + Buffed;
+                M2 = 0;
             }
 
-            if (Input.GetButtonDown("Q") && Q <= 7)
+            if (Input.GetButtonDown("Q") && Q >= 8)
             {
                 /*
                                     // fix This Fgt pLS
@@ -119,18 +121,20 @@ public class AxeAbilities : NetworkBehaviour
     */
             }
 
-            if (Input.GetButtonDown("E") && E <= 12)
+            if (Input.GetButtonDown("E") && E >= 12)
             {
                 anim.SetTrigger("Taunt");
                 IsBuffed = true;
                 buffTime = 4;
+                E = 0;
             }
 
-            if (Input.GetButtonDown("LeftShift") && LS <= 60)
+            if (Input.GetButtonDown("LeftShift") && LS >= 30)
             {
                 anim.SetTrigger("Combo");
                 sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 750 + Buffed;
+                LS = 0;
             }
         }
     }
