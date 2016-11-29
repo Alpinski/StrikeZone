@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class Skeleton_abilities : NetworkBehaviour
 {
-
+    // Declearing variables
     private Animator anim;
     public float smoothTime = 50f;
     public GameObject skullStun;
@@ -50,12 +50,13 @@ public class Skeleton_abilities : NetworkBehaviour
 
 	void Update ()
     {
-
+        //dir is the players trasform
         dir = transform.rotation;
+        //checks if this is the local client
         if (isLocalPlayer)
         {
 
-
+            // play swing animation M1 animation if the left mouse button is pressed and do damage to the target 
             if (Input.GetMouseButtonDown(0))
             {
                 anim.SetTrigger("IsAttacking");
@@ -63,12 +64,14 @@ public class Skeleton_abilities : NetworkBehaviour
                 sword.GetComponent<SwordDamage>().Damage = 500;
             }
 
+            // play swing animation M2 animation if the left mouse button is pressed and do damage to the target 
             if (Input.GetMouseButtonDown(1))
             {
                 anim.SetTrigger("RightClick");
                 sword.GetComponent<SwordDamage>().takedamage = true;
                 sword.GetComponent<SwordDamage>().Damage = 750;
             }
+
 
             QAbility();
 
@@ -82,6 +85,7 @@ public class Skeleton_abilities : NetworkBehaviour
 
     private void LSAbility()
     {
+        // turns theses flaots into timers 
         LSAbilityTimer -= Time.deltaTime;
         LSAbilityUseTimer -= Time.deltaTime;
         if (LSAbilityTimer < 0)
@@ -167,7 +171,7 @@ public class Skeleton_abilities : NetworkBehaviour
             if (Input.GetButton("Q"))
             {
 
-                targetpos = transform.position + (transform.forward * 60);
+                targetpos = transform.position + (transform.forward * 60) + (transform.up * 10);
 
                 QAbillityUseBool = true;
                 QAblittyCD = 0.4f;
