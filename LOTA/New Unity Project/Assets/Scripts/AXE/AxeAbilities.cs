@@ -111,35 +111,12 @@ public class AxeAbilities : NetworkBehaviour
 
             if (Input.GetButtonDown("Q") && Q <= 7)
             {
-                EAbilityCD -= Time.deltaTime;
-                EButtonDown = true;
-
-                if (EAbilityCD <= 0)
-                {
-                    if (EButtonDown == true)
-                    {
-                        if (Input.GetMouseButtonDown(0))
-                        {
-                            RaycastHit hitInfo = new RaycastHit();
-                            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
-
-                            if (hit == true)
-                            {
-                                Debug.Log(hit);
-                                if (hitInfo.transform.gameObject.tag == "Player" && hitInfo.transform.gameObject != gameObject)
-                                {
-                                    EAbilityCD = 10;
-                                    EButtonDown = false;
-                                    hitInfo.transform.gameObject.GetComponent<Health>().Stuned = 2;
+                /*
                                     // fix This Fgt pLS
                                     anim.SetTrigger("Kick");
                                     sword.GetComponent<SwordDamage>().takedamage = true;
                                     sword.GetComponent<SwordDamage>().Damage = 300 + Buffed;
-                                }
-                            }
-                        }
-                    }
-                }
+    */
             }
 
             if (Input.GetButtonDown("E") && E <= 12)
