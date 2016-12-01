@@ -90,12 +90,9 @@ public class SamAbilities : NetworkBehaviour {
             Ult();
         }
 
-<<<<<<< HEAD
         if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 1.5f)
-=======
         //Attacking
         if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 4)
->>>>>>> b98f608e25fc0db62bcab823ac266715960ec31e
         {
             anim.SetTrigger("isAttack");
             sword.GetComponent<SwordDamage>().takedamage = true;
