@@ -33,11 +33,12 @@ public class SamAbilities : NetworkBehaviour {
     private float xRand;
     private float zRand;
 
-    private float M1;
-    private float M2;
-    private float Q;
-    private float E;
-    private float LS;
+    //Cooldowns
+    public float M1;
+    public float M2;
+    public float Q;
+    public float E;
+    public float LS;
 
     PlayerUIController uiControl;
 
@@ -72,6 +73,7 @@ public class SamAbilities : NetworkBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //Cooldowns
         M1 += Time.deltaTime;
         M2 += Time.deltaTime;
         Q += Time.deltaTime;
@@ -88,7 +90,12 @@ public class SamAbilities : NetworkBehaviour {
             Ult();
         }
 
+<<<<<<< HEAD
         if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 1.5f)
+=======
+        //Attacking
+        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 4)
+>>>>>>> b98f608e25fc0db62bcab823ac266715960ec31e
         {
             anim.SetTrigger("isAttack");
             sword.GetComponent<SwordDamage>().takedamage = true;
@@ -101,6 +108,7 @@ public class SamAbilities : NetworkBehaviour {
     {
         if (isSpin == true)
         {
+            //While spinning
             transform.Rotate(0f, -20f, 0f);
             spinTime = spinTime - Time.deltaTime;
 
@@ -114,6 +122,7 @@ public class SamAbilities : NetworkBehaviour {
 
         if (spinTime <= 0)
         {
+            //After spin is finished
             isSpin = false;
             sammove.speed = 30f;
             trail.SetActive(false);
@@ -122,6 +131,7 @@ public class SamAbilities : NetworkBehaviour {
 
         if (Input.GetKeyDown(KeyCode.E) && E >= 14)
         {
+            //Instantaneous actions
             isSpin = true;
             trail.SetActive(true);
             sammove.speed = 20f;
@@ -135,6 +145,7 @@ public class SamAbilities : NetworkBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && LS >= 20)
         {
+            //When button is pressed
             LS = 0;
             isUlt = true;
             sword.GetComponent<SwordDamage>().takedamage = true;
@@ -142,12 +153,15 @@ public class SamAbilities : NetworkBehaviour {
 
             particles.Play();
 
+            //Finding other players
             otherPlayers = GameObject.FindGameObjectsWithTag("Player");
 
+            //making sure the selected player isn't itself
             GameObject min = null;
             float mindis = Mathf.Infinity;
             Vector3 currentPos = transform.position;
 
+            //Finding the closest player
             foreach (GameObject t in otherPlayers)
             {
                 if (t != gameObject)
@@ -167,15 +181,18 @@ public class SamAbilities : NetworkBehaviour {
 
         if (isUlt == true)
         {
+            //While using ultimate
             anim.SetBool("isMoving", false);
             anim.SetBool("isUlt", true);
 
+            //Teleporting
             transform.position = new Vector3 (nearPlayer.transform.position.x + xRand, 
                                                 nearPlayer.transform.position.y,
                                                 nearPlayer.transform.position.z + zRand);
 
             transform.LookAt(nearPlayer.transform);
 
+            //Setting teleportation offset
             if (isTele == true)
             {
                 xRand = RandRand(Random.Range(-4f, -2f), Random.Range(2f, 4f));
@@ -213,6 +230,7 @@ public class SamAbilities : NetworkBehaviour {
 
     private float RandRand(float x, float y)
     { 
+        //Making sure that the player doesn't teleport into the other player
         int stuff = Random.Range(0, 2);
         if (stuff == 0)
         {
