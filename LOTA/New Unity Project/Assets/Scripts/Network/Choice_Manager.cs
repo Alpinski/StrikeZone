@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class Choice_Manager : NetworkLobbyManager
 {
-
+    // this script changes the networkmanger
 
     public GameObject Lobby;
 
     Dictionary<int, int> currentPlayers = new Dictionary<int, int>();
 
+
+    //called to add a player when joined
     public bool RegisterPlayerJoin(int id)
     {
         if (!currentPlayers.ContainsKey(id))
@@ -32,6 +34,7 @@ public class Choice_Manager : NetworkLobbyManager
         get { return currentPlayers; }
     }
 
+
     public void SetPlayerTypeLobby(int id, int _type)
     {
         if (currentPlayers.ContainsKey(id))
@@ -48,7 +51,7 @@ public class Choice_Manager : NetworkLobbyManager
         return _temp;
     }
 
-
+    //starts a server only game 
     public void StartUpHost()
     {
         SetPort();
@@ -56,11 +59,13 @@ public class Choice_Manager : NetworkLobbyManager
 
     }
 
+    //starts a host game 
     public void startSever()
     {
         NetworkManager.singleton.StartServer();
     }
 
+    //joins a game
     public void JoinGame()
     {
         SetIPAddress();
@@ -68,13 +73,14 @@ public class Choice_Manager : NetworkLobbyManager
         NetworkManager.singleton.StartClient();
     }
 
-
+    //looks for the ip
     void SetIPAddress()
     {
         string ipAddress = GameObject.Find("inputFieldIPAddress").transform.FindChild("Text").GetComponent<Text>().text;
         NetworkManager.singleton.networkAddress = ipAddress;
     }
 
+    //looks for the port
     void SetPort()
     {
         NetworkManager.singleton.networkPort = 7777;
