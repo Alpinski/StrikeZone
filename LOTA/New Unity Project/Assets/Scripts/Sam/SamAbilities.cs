@@ -28,6 +28,7 @@ public class SamAbilities : NetworkBehaviour {
 
     private GameObject[] otherPlayers;
     private GameObject nearPlayer;
+    public GameObject sword;
 
     private float xRand;
     private float zRand;
@@ -87,9 +88,11 @@ public class SamAbilities : NetworkBehaviour {
             Ult();
         }
 
-        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 4)
+        if (Input.GetMouseButtonDown(0) && isSpin == false && isUlt == false && M1 >= 1.5f)
         {
             anim.SetTrigger("isAttack");
+            sword.GetComponent<SwordDamage>().takedamage = true;
+            sword.GetComponent<SwordDamage>().Damage = 150;
             M1 = 0;
         }
     }
@@ -122,6 +125,8 @@ public class SamAbilities : NetworkBehaviour {
             isSpin = true;
             trail.SetActive(true);
             sammove.speed = 20f;
+            sword.GetComponent<SwordDamage>().takedamage = true;
+            sword.GetComponent<SwordDamage>().Damage = 500;
             E = 0;
         }
     }
@@ -132,6 +137,8 @@ public class SamAbilities : NetworkBehaviour {
         {
             LS = 0;
             isUlt = true;
+            sword.GetComponent<SwordDamage>().takedamage = true;
+            sword.GetComponent<SwordDamage>().Damage = 3000;
 
             particles.Play();
 

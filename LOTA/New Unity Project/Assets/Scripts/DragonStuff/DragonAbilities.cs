@@ -73,13 +73,13 @@ public class DragonAbilities : NetworkBehaviour
 
             }
             //spawns projectiles
-            if (Input.GetButtonDown("Fire1") && M1 >= 1)
+            if (Input.GetButtonDown("Fire1") && M1 >= 0.5f)
             {
                 M1 = 0;
                 CmdSpawnM1FireBlot(dir);
             }
 
-            if (Input.GetButtonDown("Fire2") && M2 >= 3)
+            if (Input.GetButtonDown("Fire2") && M2 >= 2)
             {
                 M2 = 0;
                 CmdSpawnM2FireBall(dir);
