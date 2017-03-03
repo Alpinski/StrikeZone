@@ -221,14 +221,18 @@ public class SamAbilities : NetworkBehaviour {
 
     void LateUpdate()
     {
+        bool once = false;
+        if (once == false)
+        {
+            CmdFetchPlayerInfo();
+            once = true;
+        }
         uiControl.UpdatePosition(transform.position);
     }
 
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-
-        CmdFetchPlayerInfo();
     }
 
 

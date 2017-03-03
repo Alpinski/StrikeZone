@@ -138,4 +138,44 @@ public class AxeAbilities : NetworkBehaviour
             }
         }
     }
+
+
+    //networking
+    void LateUpdate()
+    {
+        bool once = false;
+        if (once == false)
+        {
+            CmdFetchPlayerInfo();
+            once = true;
+        }
+        uiControl.UpdatePosition(transform.position);
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+
+
+    }
+
+    //Command's 
+    //Command's tell the sever to do somthing, in this case they tell the sever to spawn an instantiated prefab of the abillity that is called, 
+    //eg. CmdSpawnM1FireBolt makes a instansated version of the prefab firebolt and makes it = to X, then the command tells the sever to spawn X 
+
+    [Command]
+    void CmdFetchPlayerInfo()
+    {
+        var info = GameSettings.Instance.GetPlayerInfo(connectionToClient.connectionId);
+        uiControl.SetPlayerName(info.userName);
+        RpcUpdatePlayerUI(info.userName);
+    }
+
+    [ClientRpc]
+    void RpcUpdatePlayerUI(string name)
+    {
+        uiControl.SetPlayerName(name);
+    }
+
+
 }

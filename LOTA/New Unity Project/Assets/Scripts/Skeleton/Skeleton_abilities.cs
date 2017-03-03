@@ -204,6 +204,12 @@ public class Skeleton_abilities : NetworkBehaviour
 
     void LateUpdate()
     {
+        bool once = false;
+        if (once == false)
+        {
+            CmdFetchPlayerInfo();
+            once = true;
+        }
         uiControl.UpdatePosition(transform.position);
     }
 
@@ -211,7 +217,6 @@ public class Skeleton_abilities : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
 
-        CmdFetchPlayerInfo();
     }
 
 

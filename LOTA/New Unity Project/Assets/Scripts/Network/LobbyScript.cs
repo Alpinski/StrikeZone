@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LobbyScript : NetworkBehaviour
 {
 
+    public Text p1, p2, p3, p4;
 
     private GameObject player;
 
@@ -84,19 +85,19 @@ public class LobbyScript : NetworkBehaviour
 
         if (id == 0)
         {
-            transform.GetChild(0).FindChild("Player1").GetComponent<Text>().text = username;
+            p1.text = username;
         }
         else if (id == 1)
         {
-            transform.GetChild(0).FindChild("Player2").GetComponent<Text>().text = username;
+            p2.text = username;
         }
         else if (id == 2)
         {
-            transform.GetChild(0).FindChild("Player3").GetComponent<Text>().text = username;
+            p3.text = username;
         }
         else if (id == 3)
         {
-            transform.GetChild(0).FindChild("Player4").GetComponent<Text>().text = username;
+            p4.text = username;
         }
 
 
