@@ -36,7 +36,7 @@ public class GameSettings : MonoBehaviour
             return instance;
         }
     }
-    
+    //
     public class PlayerInfo
     {
         public int heroChoice;
@@ -45,8 +45,6 @@ public class GameSettings : MonoBehaviour
 
     Dictionary<int, PlayerInfo> info = new Dictionary<int, PlayerInfo>();
 
-
-    //when called adds a player to the Dictionary
     PlayerInfo CreatePlayerEntry(int id, int heroChoice = 0)
     {
         var player = new PlayerInfo();
@@ -56,7 +54,6 @@ public class GameSettings : MonoBehaviour
         return player;
     }
 
-    //when called adds a player username
     public bool AddPlayerName(int id, string name)
     {
         if(!info.ContainsKey(id))
@@ -70,8 +67,6 @@ public class GameSettings : MonoBehaviour
         return true;
     }
 
-
-    //when called gives info on a players username and hero Choice
     public PlayerInfo GetPlayerInfo(int id)
     {
         if(!info.ContainsKey(id))

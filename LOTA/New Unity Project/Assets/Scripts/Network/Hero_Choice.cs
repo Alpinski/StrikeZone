@@ -38,7 +38,6 @@ public class Hero_Choice : NetworkBehaviour
         me = gameObject.GetComponent<NetworkLobbyPlayer>();
     }
 
-    //called when someone joins the server
     void PlayerJoinInit()
     {
         if (network == null)
@@ -48,8 +47,6 @@ public class Hero_Choice : NetworkBehaviour
             CmdPlayerRequestChoices();
     }
 
-
-    //called when a local Player is created
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
@@ -82,8 +79,6 @@ public class Hero_Choice : NetworkBehaviour
         }
     }
 
-
-    //deals with hero choice
     void SetPlayerChoice(GameObject choice)
     {
         if (choice == null)
@@ -100,8 +95,6 @@ public class Hero_Choice : NetworkBehaviour
         CmdSetPlayerChoice(choiceId);
     }
 
-
-    
     [Command]
     void CmdPushUsernameToServer(string x)
     {
@@ -156,8 +149,6 @@ public class Hero_Choice : NetworkBehaviour
         Debug.Log("Player " + id.ToString() + "was added with choice " + choice.ToString());
     }
 
-
-    //called when the dragon button is hit
     public void Dragon()
     {
         CharacterChoice = dragonPrefab;
@@ -182,8 +173,7 @@ public class Hero_Choice : NetworkBehaviour
         }
     }
 
-    //called when the Skeleton button is hit
-    public void Skeleton()
+  public void Skeleton()
     {
         CharacterChoice = SkeletonPrefab;
         SetPlayerChoice(CharacterChoice);
@@ -207,8 +197,8 @@ public class Hero_Choice : NetworkBehaviour
         }
     }
 
-    //called when the Samurai button is hit
-    public void Samurai()
+    //The Samurai prefab plugged into this script is causing problems
+   public void Samurai()
     {
         CharacterChoice = samuraiPrefab;
         SetPlayerChoice(CharacterChoice);
@@ -233,7 +223,6 @@ public class Hero_Choice : NetworkBehaviour
         }
 
     }
-    //called when the Brute button is hit
     public void Brute()
     {
         CharacterChoice = AxePrefab;
@@ -259,8 +248,6 @@ public class Hero_Choice : NetworkBehaviour
         }
     }
 
-
-    //called when the ready button is changed
     public void ready (bool x)
     {
         if (x)
@@ -274,4 +261,17 @@ public class Hero_Choice : NetworkBehaviour
         }
         }
     
+
+
+
+
+
+    void OnSeverSceneChanged()
+    {
+
+    }
+
+
+
+
 }

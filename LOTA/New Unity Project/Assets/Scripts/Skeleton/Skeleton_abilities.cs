@@ -110,30 +110,49 @@ public class Skeleton_abilities : NetworkBehaviour
     private void EAbility()
     {
 
-
+        
         EAbilityCD -= Time.deltaTime;
 
 
         if (EAbilityCD <= 0)
         {
-
-            if (Input.GetButton("E"))
+            if (Input.GetButtonDown("E"))
             {
+                EButtonDown = true;
+            }
+        }
 
-                    EAbilityCD = 10;
-                    CmdSpawnEAbillity();
-                    Debug.Log("spawned");
+        if (EButtonDown == true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hitInfo = new RaycastHit();
+                bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
 
+                if (hit == true)
+                {
+                    Debug.Log(hit);   
+                    if (hitInfo.transform.gameObject.tag == "Player" && hitInfo.transform.gameObject != gameObject)
+                    {
+                        EAbilityTarget = hitInfo.transform.gameObject;
+                        Debug.Log(EAbilityTarget);
+                        EAbilityCD = 10;
+                        CmdSpawnEAbillity(dir);
+                        EButtonDown = false;
+                    }
+                }
             }
         }
     }
 
 
     [Command]
-    void CmdSpawnEAbillity()
+    void CmdSpawnEAbillity(Quaternion rot)
     {
-        GameObject X = Instantiate(skullStun, transform.position + transform.forward * 3, transform.rotation) as GameObject;
+        GameObject X = Instantiate(skullStun, transform.position + transform.forward * 3, rot) as GameObject;
         var ohBehave = X.GetComponentInChildren<RotationCorrector>();
+        ohBehave.dir = rot;
+        X.GetComponent<SkullStun>().tar = EAbilityTarget;
         NetworkServer.Spawn(X);
     }
 
@@ -155,7 +174,7 @@ public class Skeleton_abilities : NetworkBehaviour
                 targetpos = transform.position + (transform.forward * 60) + (transform.up * 10);
 
                 QAbillityUseBool = true;
-                QAblittyCD = 0.3f;
+                QAblittyCD = 0.4f;
 
             }
 

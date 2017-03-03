@@ -19,13 +19,14 @@ public class SkullStun : NetworkBehaviour
     void Start()
     {
         // logs the target that the stun is going to
+        Debug.Log(tar);
          
     }
 
         void Update()
     {
         // moves the stun to the position of the stun
-        transform.position = transform.position + transform.forward * 1.5f;
+        transform.position = Vector3.SmoothDamp(transform.position, tar.transform.position, ref vel, Speed);
 
     }
    
