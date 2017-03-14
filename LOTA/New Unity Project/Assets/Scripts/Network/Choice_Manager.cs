@@ -56,6 +56,15 @@ public class Choice_Manager : NetworkLobbyManager
 
     }
 
+
+    public void cleanUpServer()
+    {
+        NetworkManager.singleton.StopHost();
+    }
+
+
+
+
     public void startSever()
     {
         NetworkManager.singleton.StartServer();

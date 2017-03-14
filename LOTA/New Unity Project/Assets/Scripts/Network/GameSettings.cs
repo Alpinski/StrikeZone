@@ -67,6 +67,20 @@ public class GameSettings : MonoBehaviour
         return true;
     }
 
+    public void ClearPlayerInfo(int id)
+    {
+        if (!info.ContainsKey(id))
+        {
+            print("not a good id");
+        }
+        else
+        {
+            info[id] = null;
+        }
+    }
+
+
+
     public PlayerInfo GetPlayerInfo(int id)
     {
         if(!info.ContainsKey(id))

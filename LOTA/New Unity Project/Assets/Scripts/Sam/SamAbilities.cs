@@ -246,7 +246,7 @@ public class SamAbilities : NetworkBehaviour {
         bool once = false;
         if (once == false)
         {
-            CmdFetchPlayerInfo();
+
             once = true;
         }
         uiControl.UpdatePosition(transform.position);
@@ -255,6 +255,7 @@ public class SamAbilities : NetworkBehaviour {
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
+        CmdFetchPlayerInfo();
     }
 
 

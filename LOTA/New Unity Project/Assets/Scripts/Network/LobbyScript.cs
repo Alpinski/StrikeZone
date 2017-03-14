@@ -15,6 +15,8 @@ public class LobbyScript : NetworkBehaviour
     [SyncVar]
     private int NumberofPlayers;
 
+    [SerializeField]
+    private Button dcButton;
 
     private float startDelay = 2;
 
@@ -22,12 +24,17 @@ public class LobbyScript : NetworkBehaviour
 
     NetworkLobbyManager lobbyMan;
 
+    Choice_Manager CM;
+
+
     [HideInInspector]
     public bool playerIsOnServer = false;
 
     void Start()
     {
         lobbyMan = FindObjectOfType<NetworkLobbyManager>();
+        CM = lobbyMan.GetComponent<Choice_Manager>();
+
     }
 
     int OccupiedSlots()
@@ -50,6 +57,24 @@ public class LobbyScript : NetworkBehaviour
         startDelay = 2;
  
     }
+
+    void OnPlayerDisconnected(NetworkPlayer player)
+    {
+        Debug.Log("Clean up after player " + player);
+        Network.RemoveRPCs(player);
+        Network.DestroyPlayerObjects(player);
+        GameSettings.Instance.ClearPlayerInfo(connectionToClient.connectionId);
+        DestroyServer();
+    }
+
+
+    void DestroyServer()
+    {
+        NetworkManager.singleton.StopHost();
+    }
+
+  
+
 
 
     [Command]
@@ -107,6 +132,11 @@ public class LobbyScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            dcButton = GameObject.Find("ButtonDisconnect").GetComponent<Button>();
+
+        }
         startDelay -= Time.deltaTime;
         if (isClient && playerIsOnServer) 
         {

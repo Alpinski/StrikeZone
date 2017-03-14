@@ -3,23 +3,40 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class GameManger : NetworkBehaviour
+public class GameManger : MonoBehaviour
 {
-    public Canvas pauseCanvas;
+    [SerializeField]
+    private Canvas pauseCanvas;
+    private bool enabled = false;
+
+    string x = "hello";
+
+    void Start()
+    {
+
+
+        print(x);
+
+        pauseCanvas = GameObject.Find("pauseCanvas").GetComponent<Canvas>();
+        pauseCanvas.enabled = false;
+    }
 
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (pauseCanvas.enabled == false)
+         
+            if (enabled == false)
             {
                 pauseCanvas.enabled = true;
+                enabled = true;
             }
 
-            else if (pauseCanvas.enabled == true)
-            {
-                pauseCanvas.enabled = false;
-            }
+         else
+          {
+              pauseCanvas.enabled = false;
+              enabled = false;
+          }
 
         }
     }
